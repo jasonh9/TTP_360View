@@ -27,5 +27,11 @@
   "bugs": {
     "url": "https://github.com/jasonh9/TTP_360View/issues"
   },
-  "homepage": "https://github.com/jasonh9/TTP_360View#readme"
+  "homepage": "https://github.com/jasonh9/TTP_360View#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "redis": "^2.8.0",
+    "redis-server": "^1.2.2",
+    "socket.io": "^2.3.0"
+  }
 }
