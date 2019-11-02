@@ -10,4 +10,5 @@ import Foundation
 
 struct UIRawStrings {
     static let dashboardVCStoryboardID = "dashboardVC"
+    static let dashboardItemRestoreID = "dashboardItemCell"
 }

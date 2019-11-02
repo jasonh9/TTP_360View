@@ -1,5 +1,5 @@
 //
-//  CommunicationMediumCollectionViewCell.swift
+//  DashboardItemCollectionViewCell.swift
 //  Guardian_Dashboard-Mobile
 //
 //  Created by Andrew Struck-Marcell on 11/1/19.
@@ -9,5 +9,6 @@
 import UIKit
 
 class DashboardItemCollectionViewCell: UICollectionViewCell {
+    
     
 }
