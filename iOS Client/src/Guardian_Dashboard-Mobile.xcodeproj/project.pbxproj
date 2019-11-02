@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		721A3F50236D1B63002BF83F /* DashboardItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721A3F4F236D1B63002BF83F /* DashboardItemCollectionViewCell.swift */; };
+		7276DFE4236D29B6001C6FBF /* DashboardItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7276DFE3236D29B6001C6FBF /* DashboardItem.swift */; };
 		72E9F164236D0BE00035D11F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72E9F163236D0BE00035D11F /* Constants.swift */; };
 		72F1F6CC236CEF45005AD7FB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F1F6CB236CEF45005AD7FB /* AppDelegate.swift */; };
 		72F1F6CE236CEF45005AD7FB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F1F6CD236CEF45005AD7FB /* SceneDelegate.swift */; };
@@ -19,6 +20,7 @@
 
 /* Begin PBXFileReference section */
 		721A3F4F236D1B63002BF83F /* DashboardItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardItemCollectionViewCell.swift; sourceTree = "<group>"; };
+		7276DFE3236D29B6001C6FBF /* DashboardItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardItem.swift; sourceTree = "<group>"; };
 		72E9F163236D0BE00035D11F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		72F1F6C8236CEF45005AD7FB /* Guardian_Dashboard-Mobile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Guardian_Dashboard-Mobile.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		72F1F6CB236CEF45005AD7FB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -65,6 +67,7 @@
 				72F1F6CF236CEF45005AD7FB /* DashboardViewController.swift */,
 				72F1F6D1236CEF45005AD7FB /* Main.storyboard */,
 				721A3F4F236D1B63002BF83F /* DashboardItemCollectionViewCell.swift */,
+				7276DFE3236D29B6001C6FBF /* DashboardItem.swift */,
 				72E9F163236D0BE00035D11F /* Constants.swift */,
 				72F1F6D4236CEF46005AD7FB /* Assets.xcassets */,
 				72F1F6D6236CEF46005AD7FB /* LaunchScreen.storyboard */,
@@ -146,6 +149,7 @@
 			files = (
 				721A3F50236D1B63002BF83F /* DashboardItemCollectionViewCell.swift in Sources */,
 				72F1F6D0236CEF45005AD7FB /* DashboardViewController.swift in Sources */,
+				7276DFE4236D29B6001C6FBF /* DashboardItem.swift in Sources */,
 				72F1F6CC236CEF45005AD7FB /* AppDelegate.swift in Sources */,
 				72F1F6CE236CEF45005AD7FB /* SceneDelegate.swift in Sources */,
 				72E9F164236D0BE00035D11F /* Constants.swift in Sources */,
@@ -293,6 +297,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 48535654Y7;
 				INFOPLIST_FILE = "Guardian_Dashboard-Mobile/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -311,6 +316,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 48535654Y7;
 				INFOPLIST_FILE = "Guardian_Dashboard-Mobile/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
 				LD_RUNPATH_SEARCH_PATHS = (

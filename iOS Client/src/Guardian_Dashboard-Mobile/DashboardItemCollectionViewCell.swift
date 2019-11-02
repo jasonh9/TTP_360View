@@ -9,6 +9,6 @@
 import UIKit
 
 class DashboardItemCollectionViewCell: UICollectionViewCell {
-    
-    
+    @IBOutlet weak var itemImageView: UIImageView!
+    @IBOutlet weak var itemName: UILabel!
 }

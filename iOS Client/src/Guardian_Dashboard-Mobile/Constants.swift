@@ -8,7 +8,12 @@
 
 import Foundation
 
-struct UIRawStrings {
+struct StoryboardStrings {
     static let dashboardVCStoryboardID = "dashboardVC"
     static let dashboardItemRestoreID = "dashboardItemCell"
+}
+
+struct ImageFileNames {
+    static let cellNetworkGray = "icons8-cellular-network-50"
+    static let cellNetworkGreen = "icons8-cellular-network-Green-50-2"
 }
