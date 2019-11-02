@@ -3,12 +3,14 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		721A3F50236D1B63002BF83F /* DashboardItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721A3F4F236D1B63002BF83F /* DashboardItemCollectionViewCell.swift */; };
 		7276DFE4236D29B6001C6FBF /* DashboardItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7276DFE3236D29B6001C6FBF /* DashboardItem.swift */; };
+		7276DFE7236E2C33001C6FBF /* SocketIO in Frameworks */ = {isa = PBXBuildFile; productRef = 7276DFE6236E2C33001C6FBF /* SocketIO */; };
+		7276DFE9236E2C52001C6FBF /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7276DFE8236E2C52001C6FBF /* Networking.swift */; };
 		72E9F164236D0BE00035D11F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72E9F163236D0BE00035D11F /* Constants.swift */; };
 		72F1F6CC236CEF45005AD7FB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F1F6CB236CEF45005AD7FB /* AppDelegate.swift */; };
 		72F1F6CE236CEF45005AD7FB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F1F6CD236CEF45005AD7FB /* SceneDelegate.swift */; };
@@ -21,6 +23,7 @@
 /* Begin PBXFileReference section */
 		721A3F4F236D1B63002BF83F /* DashboardItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardItemCollectionViewCell.swift; sourceTree = "<group>"; };
 		7276DFE3236D29B6001C6FBF /* DashboardItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardItem.swift; sourceTree = "<group>"; };
+		7276DFE8236E2C52001C6FBF /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 		72E9F163236D0BE00035D11F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		72F1F6C8236CEF45005AD7FB /* Guardian_Dashboard-Mobile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Guardian_Dashboard-Mobile.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		72F1F6CB236CEF45005AD7FB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -37,6 +40,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7276DFE7236E2C33001C6FBF /* SocketIO in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -67,6 +71,7 @@
 				72F1F6CF236CEF45005AD7FB /* DashboardViewController.swift */,
 				72F1F6D1236CEF45005AD7FB /* Main.storyboard */,
 				721A3F4F236D1B63002BF83F /* DashboardItemCollectionViewCell.swift */,
+				7276DFE8236E2C52001C6FBF /* Networking.swift */,
 				7276DFE3236D29B6001C6FBF /* DashboardItem.swift */,
 				72E9F163236D0BE00035D11F /* Constants.swift */,
 				72F1F6D4236CEF46005AD7FB /* Assets.xcassets */,
@@ -92,6 +97,9 @@
 			dependencies = (
 			);
 			name = "Guardian_Dashboard-Mobile";
+			packageProductDependencies = (
+				7276DFE6236E2C33001C6FBF /* SocketIO */,
+			);
 			productName = "Guardian_Dashboard-Mobile";
 			productReference = 72F1F6C8236CEF45005AD7FB /* Guardian_Dashboard-Mobile.app */;
 			productType = "com.apple.product-type.application";
@@ -120,6 +128,9 @@
 				Base,
 			);
 			mainGroup = 72F1F6BF236CEF45005AD7FB;
+			packageReferences = (
+				7276DFE5236E2C33001C6FBF /* XCRemoteSwiftPackageReference "socket.io-client-swift" */,
+			);
 			productRefGroup = 72F1F6C9236CEF45005AD7FB /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -153,6 +164,7 @@
 				72F1F6CC236CEF45005AD7FB /* AppDelegate.swift in Sources */,
 				72F1F6CE236CEF45005AD7FB /* SceneDelegate.swift in Sources */,
 				72E9F164236D0BE00035D11F /* Constants.swift in Sources */,
+				7276DFE9236E2C52001C6FBF /* Networking.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -352,6 +364,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		7276DFE5236E2C33001C6FBF /* XCRemoteSwiftPackageReference "socket.io-client-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/socketio/socket.io-client-swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 15.2.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		7276DFE6236E2C33001C6FBF /* SocketIO */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7276DFE5236E2C33001C6FBF /* XCRemoteSwiftPackageReference "socket.io-client-swift" */;
+			productName = SocketIO;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 72F1F6C0236CEF45005AD7FB /* Project object */;
 }
