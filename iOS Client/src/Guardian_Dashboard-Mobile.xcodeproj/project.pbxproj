@@ -7,19 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		72E9F164236D0BE00035D11F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72E9F163236D0BE00035D11F /* Constants.swift */; };
+		72E9F166236D13E30035D11F /* DashboardItemCollectionViewCell in Sources */ = {isa = PBXBuildFile; fileRef = 72E9F165236D13E30035D11F /* DashboardItemCollectionViewCell */; };
 		72F1F6CC236CEF45005AD7FB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F1F6CB236CEF45005AD7FB /* AppDelegate.swift */; };
 		72F1F6CE236CEF45005AD7FB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F1F6CD236CEF45005AD7FB /* SceneDelegate.swift */; };
-		72F1F6D0236CEF45005AD7FB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F1F6CF236CEF45005AD7FB /* ViewController.swift */; };
+		72F1F6D0236CEF45005AD7FB /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F1F6CF236CEF45005AD7FB /* DashboardViewController.swift */; };
 		72F1F6D3236CEF45005AD7FB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 72F1F6D1236CEF45005AD7FB /* Main.storyboard */; };
 		72F1F6D5236CEF46005AD7FB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 72F1F6D4236CEF46005AD7FB /* Assets.xcassets */; };
 		72F1F6D8236CEF46005AD7FB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 72F1F6D6236CEF46005AD7FB /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		72E9F163236D0BE00035D11F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		72E9F165236D13E30035D11F /* DashboardItemCollectionViewCell */ = {isa = PBXFileReference; lastKnownFileType = text; path = DashboardItemCollectionViewCell; sourceTree = "<group>"; };
 		72F1F6C8236CEF45005AD7FB /* Guardian_Dashboard-Mobile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Guardian_Dashboard-Mobile.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		72F1F6CB236CEF45005AD7FB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		72F1F6CD236CEF45005AD7FB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		72F1F6CF236CEF45005AD7FB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		72F1F6CF236CEF45005AD7FB /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
 		72F1F6D2236CEF45005AD7FB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		72F1F6D4236CEF46005AD7FB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		72F1F6D7236CEF46005AD7FB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -58,8 +62,10 @@
 			children = (
 				72F1F6CB236CEF45005AD7FB /* AppDelegate.swift */,
 				72F1F6CD236CEF45005AD7FB /* SceneDelegate.swift */,
-				72F1F6CF236CEF45005AD7FB /* ViewController.swift */,
+				72F1F6CF236CEF45005AD7FB /* DashboardViewController.swift */,
 				72F1F6D1236CEF45005AD7FB /* Main.storyboard */,
+				72E9F165236D13E30035D11F /* DashboardItemCollectionViewCell */,
+				72E9F163236D0BE00035D11F /* Constants.swift */,
 				72F1F6D4236CEF46005AD7FB /* Assets.xcassets */,
 				72F1F6D6236CEF46005AD7FB /* LaunchScreen.storyboard */,
 				72F1F6D9236CEF46005AD7FB /* Info.plist */,
@@ -138,9 +144,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				72F1F6D0236CEF45005AD7FB /* ViewController.swift in Sources */,
+				72F1F6D0236CEF45005AD7FB /* DashboardViewController.swift in Sources */,
 				72F1F6CC236CEF45005AD7FB /* AppDelegate.swift in Sources */,
+				72E9F166236D13E30035D11F /* DashboardItemCollectionViewCell in Sources */,
 				72F1F6CE236CEF45005AD7FB /* SceneDelegate.swift in Sources */,
+				72E9F164236D0BE00035D11F /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
