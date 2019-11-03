@@ -13,12 +13,12 @@ class BTUsersViewController: UIViewController {
     
     let sensorAggregator = SensorAggregator()
     var newBTLEUsers: [String] = []
-    let dummyRecentBTLEUsers: [String] = ["John's iPhone", "Wal-Mart Beacon 4"]
+    let dummyRecentBTLEUsers: [String] = ["Shelley's Pixel 3", "Wal-Mart Beacon 4"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
+        btUsersTableView.tableFooterView = UIView()
     }
     
 
@@ -30,21 +30,30 @@ extension BTUsersViewController: UITableViewDataSource, UITableViewDelegate {
         return 2
     }
     
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if section == 0 {
+            return "Connected Devices"
+        }
+        return "Recently Connected Devices"
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 //        return sensorAggregator.btService.discoveredPeripherals.count
         if section == 0 {
             return newBTLEUsers.count
-        } else if section == 1{
-            return dummyRecentBTLEUsers.count
         }
+        return dummyRecentBTLEUsers.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return tableView.frame.height / 10
+        return tableView.frame.height/10
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        <#code#>
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: StoryboardStrings.btUsersCellID, for: indexPath) as? BTUserTableViewCell else { return UITableViewCell() }
+        let dataSource: [String] = indexPath.section == 0 ? newBTLEUsers : dummyRecentBTLEUsers
+        cell.btUserName.text = dataSource[indexPath.row]
+        return cell
     }
     
     

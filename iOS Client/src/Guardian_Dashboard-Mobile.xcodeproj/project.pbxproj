@@ -19,6 +19,14 @@
 		7276DFF6236E75D6001C6FBF /* BluetoothService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7276DFF5236E75D6001C6FBF /* BluetoothService.swift */; };
 		7276DFF9236E7AC2001C6FBF /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7276DFF8236E7AC2001C6FBF /* LocationService.swift */; };
 		72956DA3236E873200D57EA6 /* CellularServiceInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72956DA2236E873200D57EA6 /* CellularServiceInfo.swift */; };
+		72B10B20236F25FF00CF4DBA /* NFCTransmissionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B10B1F236F25FF00CF4DBA /* NFCTransmissionsViewController.swift */; };
+		72B10B22236F262B00CF4DBA /* VPNConnectionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B10B21236F262B00CF4DBA /* VPNConnectionsViewController.swift */; };
+		72B10B24236F264F00CF4DBA /* WiFiConnectionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B10B23236F264F00CF4DBA /* WiFiConnectionsViewController.swift */; };
+		72B10B28236F2CCD00CF4DBA /* NFCTransmissionsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B10B27236F2CCD00CF4DBA /* NFCTransmissionsTableViewCell.swift */; };
+		72B10B2A236F2D0A00CF4DBA /* VPNConnectionsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B10B29236F2D0A00CF4DBA /* VPNConnectionsTableViewCell.swift */; };
+		72B10B2C236F2D2A00CF4DBA /* WifiConnectionsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B10B2B236F2D2A00CF4DBA /* WifiConnectionsTableViewCell.swift */; };
+		72BFD0C9236F33DB0099F58B /* VPNRecentConnectionsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72BFD0C8236F33DB0099F58B /* VPNRecentConnectionsTableViewCell.swift */; };
+		72BFD0CB236F37E60099F58B /* WiFiRecentConnectionsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72BFD0CA236F37E60099F58B /* WiFiRecentConnectionsTableViewCell.swift */; };
 		72E9F164236D0BE00035D11F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72E9F163236D0BE00035D11F /* Constants.swift */; };
 		72F1F6CC236CEF45005AD7FB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F1F6CB236CEF45005AD7FB /* AppDelegate.swift */; };
 		72F1F6CE236CEF45005AD7FB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F1F6CD236CEF45005AD7FB /* SceneDelegate.swift */; };
@@ -40,6 +48,14 @@
 		7276DFF5236E75D6001C6FBF /* BluetoothService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothService.swift; sourceTree = "<group>"; };
 		7276DFF8236E7AC2001C6FBF /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		72956DA2236E873200D57EA6 /* CellularServiceInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellularServiceInfo.swift; sourceTree = "<group>"; };
+		72B10B1F236F25FF00CF4DBA /* NFCTransmissionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFCTransmissionsViewController.swift; sourceTree = "<group>"; };
+		72B10B21236F262B00CF4DBA /* VPNConnectionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPNConnectionsViewController.swift; sourceTree = "<group>"; };
+		72B10B23236F264F00CF4DBA /* WiFiConnectionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiFiConnectionsViewController.swift; sourceTree = "<group>"; };
+		72B10B27236F2CCD00CF4DBA /* NFCTransmissionsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFCTransmissionsTableViewCell.swift; sourceTree = "<group>"; };
+		72B10B29236F2D0A00CF4DBA /* VPNConnectionsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VPNConnectionsTableViewCell.swift; path = "Guardian_Dashboard-Mobile/VPNConnectionsTableViewCell.swift"; sourceTree = SOURCE_ROOT; };
+		72B10B2B236F2D2A00CF4DBA /* WifiConnectionsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WifiConnectionsTableViewCell.swift; sourceTree = "<group>"; };
+		72BFD0C8236F33DB0099F58B /* VPNRecentConnectionsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPNRecentConnectionsTableViewCell.swift; sourceTree = "<group>"; };
+		72BFD0CA236F37E60099F58B /* WiFiRecentConnectionsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiFiRecentConnectionsTableViewCell.swift; sourceTree = "<group>"; };
 		72E9F163236D0BE00035D11F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		72F1F6C8236CEF45005AD7FB /* Guardian_Dashboard-Mobile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Guardian_Dashboard-Mobile.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		72F1F6CB236CEF45005AD7FB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -75,8 +91,16 @@
 		7276DFEB236E34C5001C6FBF /* View & Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				72BFD0CA236F37E60099F58B /* WiFiRecentConnectionsTableViewCell.swift */,
+				72B10B29236F2D0A00CF4DBA /* VPNConnectionsTableViewCell.swift */,
+				72B10B2B236F2D2A00CF4DBA /* WifiConnectionsTableViewCell.swift */,
 				72F1F6CF236CEF45005AD7FB /* DashboardViewController.swift */,
 				721401CC236EF54000DB7A28 /* BTUsersViewController.swift */,
+				72B10B21236F262B00CF4DBA /* VPNConnectionsViewController.swift */,
+				72B10B23236F264F00CF4DBA /* WiFiConnectionsViewController.swift */,
+				72B10B1F236F25FF00CF4DBA /* NFCTransmissionsViewController.swift */,
+				72B10B27236F2CCD00CF4DBA /* NFCTransmissionsTableViewCell.swift */,
+				72BFD0C8236F33DB0099F58B /* VPNRecentConnectionsTableViewCell.swift */,
 				721401CE236EF89F00DB7A28 /* BTUserTableViewCell.swift */,
 				72F1F6D1236CEF45005AD7FB /* Main.storyboard */,
 				721A3F4F236D1B63002BF83F /* DashboardItemCollectionViewCell.swift */,
@@ -231,7 +255,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				72B10B2A236F2D0A00CF4DBA /* VPNConnectionsTableViewCell.swift in Sources */,
+				72BFD0C9236F33DB0099F58B /* VPNRecentConnectionsTableViewCell.swift in Sources */,
 				721A3F50236D1B63002BF83F /* DashboardItemCollectionViewCell.swift in Sources */,
+				72BFD0CB236F37E60099F58B /* WiFiRecentConnectionsTableViewCell.swift in Sources */,
+				72B10B2C236F2D2A00CF4DBA /* WifiConnectionsTableViewCell.swift in Sources */,
+				72B10B20236F25FF00CF4DBA /* NFCTransmissionsViewController.swift in Sources */,
 				72F1F6D0236CEF45005AD7FB /* DashboardViewController.swift in Sources */,
 				7276DFF1236E4E5C001C6FBF /* JSONEmit.swift in Sources */,
 				7276DFE4236D29B6001C6FBF /* DashboardItem.swift in Sources */,
@@ -241,10 +270,13 @@
 				721401CD236EF54000DB7A28 /* BTUsersViewController.swift in Sources */,
 				7276DFF9236E7AC2001C6FBF /* LocationService.swift in Sources */,
 				72E9F164236D0BE00035D11F /* Constants.swift in Sources */,
+				72B10B28236F2CCD00CF4DBA /* NFCTransmissionsTableViewCell.swift in Sources */,
 				7276DFF4236E64F9001C6FBF /* SensorAggregator.swift in Sources */,
+				72B10B24236F264F00CF4DBA /* WiFiConnectionsViewController.swift in Sources */,
 				7276DFF6236E75D6001C6FBF /* BluetoothService.swift in Sources */,
 				721401CF236EF89F00DB7A28 /* BTUserTableViewCell.swift in Sources */,
 				7276DFE9236E2C52001C6FBF /* SocketIOManager.swift in Sources */,
+				72B10B22236F262B00CF4DBA /* VPNConnectionsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,5 +1,5 @@
 //
-//  BTUserTableViewCell.swift
+//  VPNRecentConnectionsTableViewCell.swift
 //  Guardian_Dashboard-Mobile
 //
 //  Created by Andrew Struck-Marcell on 11/3/19.
@@ -8,9 +8,9 @@
 
 import UIKit
 
-class BTUserTableViewCell: UITableViewCell {
-    @IBOutlet weak var btUserName: UILabel!
-    
+class VPNRecentConnectionsTableViewCell: UITableViewCell {
+
+    @IBOutlet weak var recentConnections: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -19,6 +19,7 @@ class BTUserTableViewCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
+        // Configure the view for the selected state
     }
 
 }

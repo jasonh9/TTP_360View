@@ -11,6 +11,17 @@ import Foundation
 struct StoryboardStrings {
     static let dashboardVCStoryboardID = "dashboardVC"
     static let dashboardItemRestoreID = "dashboardItemCell"
+    static let btUsersCellID = "btUsersCell"
+    static let nfcTransmissionCellID = "nfcTransmission"
+    static let vpnConnectionsCellID = "vpnConnections"
+    static let vpnRecentConnectionsCellID = "recentVpnConnections"
+    static let wifiConnectionsCellID = "wifiConnections"
+    static let wifiRecentConnectionsCellID = "wifiRecentConnections"
+    static let btUsersVCID = "btUsersVC"
+    static let nfcTransmissionsVCID = "nfcTransmissionsVC"
+    static let vpnConnectionsVCID = "vpnConnectionsVC"
+    static let wifiConnectionsVCID = "wifiConnectionsVC"
+    static let segueToBtUsersVCID = "segueToBTUsers"
 }
 
 struct ImageFileNames {

@@ -52,7 +52,7 @@ class SocketIOManager: NSObject {
                                                 LTE: LTE(connectionStatus: connectionStatus, provider: "AT&T"),
                                                 BLE: [BTLE(deviceName: "John's iphone", sigStrength: "proximate", btSystem: "BLE"),
                                                       BTLE(deviceName: "ABCDE", sigStrength: "weak", btSystem: "BLE")],
-                                                NFC: NFC(status: "on", scans: [NFC.Scan(tagType: "mifare", timestamp: "1572749269"),
+                                                NFC: NFC(status: "off", scans: [NFC.Scan(tagType: "mifare", timestamp: "1572749269"),
                                                                                NFC.Scan(tagType: "ndef", timestamp: "1572749266")]),
                                                 HRD_ENC: Encryption(encryptionStatus: "on"),
                                                 VPN: VPN(currentConnection: VPN.CurrentConnection(connectionName: "firstNetVPN111", timestamp: "1572749266"),
