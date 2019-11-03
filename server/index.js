@@ -75,6 +75,18 @@ io.on('connection', (socket) => {
         });
     }
 
+    socket.on('getDATA', (UUID) => {
+        RedisClient.HGETALL(UUID, (err, reply) => {
+            socket.emit(UUID, reply);
+            console.log(reply)
+        })
+    })
+
+    socket.on('test', () => {
+        console.log('got a test message from test, emitting response')
+        socket.broadcast.emit('response', 'hello friends!');
+    })
+
     // register the user using UUID
     socket.on('register', (UUID) => {
         console.log('User is requesting to register : ', UUID)
@@ -84,25 +96,41 @@ io.on('connection', (socket) => {
         })
     })
 
+    // request all registered users
+    socket.on('requestAllRegisteredUsers', (data) => {
+        RedisClient.LRANGE('RegisteredDevices', 0, -1, (err, reply) => {
+            socket.emit('responseAllRegisteredUsers', reply)
+        })
+    })
+
     // get data from user and load it in a hashmap
     socket.on('clientData' , (payload) => {
-        // create a category seperation
-        // LTE, BLE, NFC, HRD_ENC, VPN, WIFI, GPS, AV, MDM
-        // console.log('payload = ', payload, 'and type is ', typeof(payload))
-
+        let validatedPayload = typeof(payload) === 'string' ? JSON.parse(payload) : payload;
+        console.log(validatedPayload)
         const processData = () => {
-            sendValidResponse(payload.UUID);
+            sendValidResponse(validatedPayload.UUID);
+            const processSensor = (keys, validatedPayload) => {
+                // console.log(payload.UUID, keys, payload[keys])
+                // console.log(`${payload.UUID}, ${keys}, ${JSON.stringify(payload[keys])}`)
+                Object.keys(pay = validatedPayload[keys]).forEach( (value) => {
+                    // typeof(pay[value]) !== 'object' ? console.log(keys , ' -> ', value , ' - ', pay[value]) : false
+                    typeof(pay[value]) !== 'object' ? RedisClient.HSET(validatedPayload.UUID, `${keys}_${value}`, `${pay[value]}`) : false;
+                })
 
-            Object.keys(payload).forEach((keys) => {
-                console.log(keys)
+            }
+            Object.keys(validatedPayload).forEach((keys) => {
+                Object.keys(sensorType).forEach( (value) => {
+                    keys === value ? processSensor(keys, validatedPayload) : false;
+                })
             })
             
-            Object.keys(payload.LTE).forEach( (keys) => {
-                RedisClient.HSET(payload.UUID, `LTE.${keys}`, `${payload.LTE[keys]}`)
+            RedisClient.HGETALL(validatedPayload.UUID, (err, reply) => {
+                socket.broadcast.emit(validatedPayload.UUID, reply);
+                console.log(reply)
             })
         }
 
-        typeof(payload) === 'object' && payload.UUID ? processData() : console.log('error getting data');
+        typeof(validatedPayload) === 'object' && validatedPayload.UUID ? processData() : console.log('error getting data');
     })
 
 });

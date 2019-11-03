@@ -4,18 +4,32 @@
       "provider": "first net",
       "connectionStatus": "disconnected"
     },
-    "BLE": [
-      {
-        "deviceName": "Headphonexyz",
-        "sigStrength": "20",
-        "protocol": "BLE"
-      },
-      {
-        "deviceName": "smart ring",
-        "sigStrength": "10",
-        "protocol": "Classic"
-      }
-    ],
+    "BLE": {
+      "currentConnection": [
+        {
+          "deviceName": "Headphonexyz",
+          "sigStrength": "20",
+          "protocol": "BLE"
+        },
+        {
+          "deviceName": "smart ring",
+          "sigStrength": "10",
+          "protocol": "Classic"
+        }
+      ],
+      "recentConnection": [
+        {
+          "deviceName": "earbuds",
+          "sigStrength": "30",
+          "protocol": "BLE"
+        },
+        {
+          "deviceName": "smart hose",
+          "sigStrength": "60",
+          "protocol": "Classic"
+        }
+      ]
+    },
     "NFC": {
       "status": "on",
       "scans": [

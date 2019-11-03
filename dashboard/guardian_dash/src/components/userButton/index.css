@@ -13,3 +13,7 @@
     margin: 10px 0;
     border-radius: 20px;
 }
+
+.activeUsers ul li:active{
+    background-color: black;
+}
