@@ -17,8 +17,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let _ = (scene as? UIWindowScene) else { return }
-        btManager.setup()
-//        locationService.manager.start
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
@@ -31,6 +29,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func sceneDidBecomeActive(_ scene: UIScene) {
         let deviceID = UIDevice.current.identifierForVendor?.uuidString ?? ""
         socketManager.connect(withMessage: deviceID)
+        
+        btManager.setup()
+        locationService.manager.startUpdatingLocation()
     }
 
     func sceneWillResignActive(_ scene: UIScene) {

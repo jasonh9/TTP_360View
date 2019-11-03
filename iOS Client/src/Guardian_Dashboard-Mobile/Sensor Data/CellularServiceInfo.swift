@@ -20,4 +20,5 @@ extension CellularServiceInfo: CTTelephonyNetworkInfoDelegate {
     func dataServiceIdentifierDidChange(_ identifier: String) {
         print("data service identifier changed, identifier is: \(identifier)")
     }
+    
 }

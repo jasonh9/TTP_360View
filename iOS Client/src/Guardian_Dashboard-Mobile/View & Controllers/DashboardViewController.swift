@@ -11,13 +11,31 @@ import UIKit
 class DashboardViewController: UIViewController {
     @IBOutlet weak var dashboardItemsCollectionView: UICollectionView!
     
-    let items: [DashboardItem] = DashboardItem.defaultItems
+    let socketManager = SocketIOManager.shared
+    var items: [DashboardItem] = DashboardItem.defaultItems {
+        didSet {
+            socketManager.sendJSON(with: UIDevice.current.identifierForVendor?.uuidString ?? "",
+                                   connectionStatus: "disconnected",
+                                   newBTLEUsers: [BTLE(deviceName: "John's iphone", sigStrength: "proximate", btSystem: "BLE"), BTLE(deviceName: "ABCDE", sigStrength: "weak", btSystem: "BLE")])
+        }
+    }
     var collectionViewWidth: CGFloat { return dashboardItemsCollectionView.bounds.width }
     var collectionViewHeight: CGFloat { return dashboardItemsCollectionView.bounds.height }
-    var itemHeight: CGFloat { return collectionViewHeight / 6.5 }
+    var itemHeight: CGFloat { return collectionViewHeight / 5 }
+    
+    @IBAction func hiddenChangeButtonTapped(_ sender: UIButton) {
+        print("hiddenChangeButtonTapped")
+        changeInStatus()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    func changeInStatus() {
+        items[0] = DashboardItem(type: .lte(signalStrength: .noSignal))
+        socketManager.updateInterval = 300
+        dashboardItemsCollectionView.reloadData()
     }
 
 
@@ -39,7 +57,10 @@ extension DashboardViewController: UICollectionViewDataSource, UICollectionViewD
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        //
+        //BTLE
+        if indexPath.item == 1 {
+            
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

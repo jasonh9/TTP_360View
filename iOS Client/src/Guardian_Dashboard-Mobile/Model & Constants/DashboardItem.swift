@@ -47,33 +47,69 @@ enum TurnedOnStatus {
 }
 
 struct DashboardItem {
-    static let defaultItems: [DashboardItem] = [DashboardItem(type: .lte(signalStrength: .strong)), DashboardItem(type: .btle(connectionStrength: .proximate)), DashboardItem(type: .btClassic(pairedStatus: .notPaired)), DashboardItem(type: .nfc(status: .on)), DashboardItem(type: .encryptionStatus(status: .off)), DashboardItem(type: .vpn(status: .off)), DashboardItem(type: .wifi(signalStrength: .medium)), DashboardItem(type: .gps(status: .on)), DashboardItem(type: .antivirusStatus(status: .off)), DashboardItem(type: .mdmStatus(status: .off))]
+    static let defaultItems: [DashboardItem] = [DashboardItem(type: .lte(signalStrength: .strong)), DashboardItem(type: .btle(connectionStrength: .proximate)), /*DashboardItem(type: .btClassic(pairedStatus: .notPaired)),*/ DashboardItem(type: .nfc(status: .on)), DashboardItem(type: .encryptionStatus(status: .off)), DashboardItem(type: .vpn(status: .off)), DashboardItem(type: .wifi(signalStrength: .medium)), DashboardItem(type: .gps(status: .on)), DashboardItem(type: .antivirusStatus(status: .off)), DashboardItem(type: .mdmStatus(status: .off))]
     
     let type: DashboardItemType
     var image: UIImage? {
         switch type {
         case .lte(let signalStrength):
             switch signalStrength {
-            case .noSignal: return UIImage(named: ImageFileNames.cellNetworkGreen)
-            case .weak: return UIImage(named: ImageFileNames.cellNetworkGreen)
-            case .medium: return UIImage(named: ImageFileNames.cellNetworkGreen)
+            case .noSignal: return UIImage(named: ImageFileNames.cellNetworkRed)
+            case .weak: return UIImage(named: ImageFileNames.cellNetworkGray)
+            case .medium: return UIImage(named: ImageFileNames.cellNetworkYellow)
             case .strong: return UIImage(named: ImageFileNames.cellNetworkGreen)
             }
-        case .btle(let connectionStrength): return UIImage(named: ImageFileNames.cellNetworkGray)
-        case .btClassic(let pairedStatus): return UIImage(named: ImageFileNames.cellNetworkGray)
-        case .nfc(let status): return UIImage(named: ImageFileNames.cellNetworkGray)
-        case .encryptionStatus(let status): return UIImage(named: ImageFileNames.cellNetworkGray)
-        case .vpn(let status): return UIImage(named: ImageFileNames.cellNetworkGray)
-        case .wifi(let signalStrength): return UIImage(named: ImageFileNames.cellNetworkGray)
-        case .gps(let status): return UIImage(named: ImageFileNames.cellNetworkGray)
-        case .antivirusStatus(let status): return UIImage(named: ImageFileNames.cellNetworkGray)
-        case .mdmStatus(let status): return UIImage(named: ImageFileNames.cellNetworkGray)
+        case .btle(let connectionStrength):
+            switch connectionStrength {
+            case .proximate: return UIImage(named: ImageFileNames.bluetoothGreen)
+            case .turnedOff: return UIImage(named: ImageFileNames.bluetoothRed)
+            case .weak: return UIImage(named: ImageFileNames.bluetoothYellow)
+            }
+        case .btClassic(let pairedStatus): return UIImage(named: ImageFileNames.bluetoothRed)
+        case .nfc(let status):
+            switch status {
+            case .off: return UIImage(named: ImageFileNames.nfcRed)
+            case .on: return UIImage(named: ImageFileNames.nfcGreen)
+            }
+        case .encryptionStatus(let status):
+            switch status {
+            case .off: return UIImage(named: ImageFileNames.encryptionRed)
+            case .on: return UIImage(named: ImageFileNames.encryptionGreen)
+            }
+        case .vpn(let status):
+            switch status {
+            case .off: return UIImage(named: ImageFileNames.vpnGray)
+            case .on: return UIImage(named: ImageFileNames.vpnBlack)
+            }
+        case .wifi(let signalStrength):
+            switch signalStrength {
+            case .noSignal: return UIImage(named: ImageFileNames.wifiRed)
+            case .weak: return UIImage(named: ImageFileNames.wifiGray)
+            case .medium: return UIImage(named: ImageFileNames.wifiYellow)
+            case .strong: return UIImage(named: ImageFileNames.wifiGreen)
+            }
+        case .gps(let status):
+            switch status {
+            case .off: return UIImage(named: ImageFileNames.gpsRed)
+            case .on: return UIImage(named: ImageFileNames.gpsGreen)
+            }
+        case .antivirusStatus(let status):
+            switch status {
+            case .off: return UIImage(named: ImageFileNames.antivirusRed)
+            case .on: return UIImage(named: ImageFileNames.antivirusGreen)
+            }
+        case .mdmStatus(let status):
+            switch status {
+            case .off: return UIImage(named: ImageFileNames.mdmGray)
+            case .on: return UIImage(named: ImageFileNames.mdmBlack)
+            }
         }
     }
+    
     var name: String {
         switch type {
         case .lte: return "4G"
-        case .btle: return "BTLE"
+        case .btle: return "Bluetooth"
         case .btClassic: return "BT Classic"
         case .nfc: return "NFC"
         case .encryptionStatus: return "Encryption"

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		721401CD236EF54000DB7A28 /* BTUsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721401CC236EF54000DB7A28 /* BTUsersViewController.swift */; };
+		721401CF236EF89F00DB7A28 /* BTUserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721401CE236EF89F00DB7A28 /* BTUserTableViewCell.swift */; };
 		721A3F50236D1B63002BF83F /* DashboardItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721A3F4F236D1B63002BF83F /* DashboardItemCollectionViewCell.swift */; };
 		7276DFE4236D29B6001C6FBF /* DashboardItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7276DFE3236D29B6001C6FBF /* DashboardItem.swift */; };
 		7276DFE7236E2C33001C6FBF /* SocketIO in Frameworks */ = {isa = PBXBuildFile; productRef = 7276DFE6236E2C33001C6FBF /* SocketIO */; };
@@ -27,6 +29,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		721401CC236EF54000DB7A28 /* BTUsersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTUsersViewController.swift; sourceTree = "<group>"; };
+		721401CE236EF89F00DB7A28 /* BTUserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTUserTableViewCell.swift; sourceTree = "<group>"; };
 		721A3F4F236D1B63002BF83F /* DashboardItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardItemCollectionViewCell.swift; sourceTree = "<group>"; };
 		7276DFE3236D29B6001C6FBF /* DashboardItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardItem.swift; sourceTree = "<group>"; };
 		7276DFE8236E2C52001C6FBF /* SocketIOManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketIOManager.swift; sourceTree = "<group>"; };
@@ -72,6 +76,8 @@
 			isa = PBXGroup;
 			children = (
 				72F1F6CF236CEF45005AD7FB /* DashboardViewController.swift */,
+				721401CC236EF54000DB7A28 /* BTUsersViewController.swift */,
+				721401CE236EF89F00DB7A28 /* BTUserTableViewCell.swift */,
 				72F1F6D1236CEF45005AD7FB /* Main.storyboard */,
 				721A3F4F236D1B63002BF83F /* DashboardItemCollectionViewCell.swift */,
 			);
@@ -232,10 +238,12 @@
 				72F1F6CC236CEF45005AD7FB /* AppDelegate.swift in Sources */,
 				72956DA3236E873200D57EA6 /* CellularServiceInfo.swift in Sources */,
 				72F1F6CE236CEF45005AD7FB /* SceneDelegate.swift in Sources */,
+				721401CD236EF54000DB7A28 /* BTUsersViewController.swift in Sources */,
 				7276DFF9236E7AC2001C6FBF /* LocationService.swift in Sources */,
 				72E9F164236D0BE00035D11F /* Constants.swift in Sources */,
 				7276DFF4236E64F9001C6FBF /* SensorAggregator.swift in Sources */,
 				7276DFF6236E75D6001C6FBF /* BluetoothService.swift in Sources */,
+				721401CF236EF89F00DB7A28 /* BTUserTableViewCell.swift in Sources */,
 				7276DFE9236E2C52001C6FBF /* SocketIOManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

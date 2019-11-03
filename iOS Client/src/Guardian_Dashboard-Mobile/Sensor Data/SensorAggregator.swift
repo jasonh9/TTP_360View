@@ -25,6 +25,8 @@ class SensorAggregator: NSObject {
 
 extension SensorAggregator: BTServiceUpdateDelegate {
     func btUpdateResponse() {
+        print("updating bluetooth")
         discoveredBTLEPeripherals = btService.discoveredPeripherals
     }
+    
 }

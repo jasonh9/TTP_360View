@@ -20,6 +20,8 @@ class BTService: NSObject {
     var peripheralManager: CBPeripheralManager!
     var delegate: BTServiceUpdateDelegate?
     var discoveredPeripherals: [String] = []
+    var centralIsOn = false
+    var peripheralManagerIsOn = false
     
     let serviceUUID: CBUUID = CBUUID(string: "499f2d6a-0672-4df2-9bb7-a330b87ab466")
     
@@ -30,24 +32,31 @@ class BTService: NSObject {
         Timer.scheduledTimer(withTimeInterval: 10, repeats: true) { [unowned self] (timer) in
             self.updater()
         }
-        startBroadcasting()
+//        addService()
+//        startBroadcasting()
     }
     
     func updater() {
-        centralManager.scanForPeripherals(withServices: [serviceUUID], options: nil)
+        if centralIsOn {
+            centralManager.scanForPeripherals(withServices: [serviceUUID], options: nil)
+        }
         
         delegate?.btUpdateResponse()
     }
     
     func startBroadcasting() {
-        addService()
+        peripheralManager.stopAdvertising()
+//        addService()
         
-        peripheralManager.startAdvertising(nil)
+        if peripheralManagerIsOn {
+            peripheralManager.startAdvertising([CBAdvertisementDataServiceUUIDsKey : [serviceUUID]])
+        }
     }
     
     func addService() {
         let service = CBMutableService(type: serviceUUID, primary: true)
-        service.characteristics = []
+        let characteristic = CBMutableCharacteristic(type: CBUUID(string: "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"), properties: .read, value: nil, permissions: .readable)
+        service.characteristics = [characteristic]
         
         peripheralManager.add(service)
     }
@@ -67,6 +76,7 @@ extension BTService: CBCentralManagerDelegate {
         case .poweredOff:
             centralManager.stopScan()
         case .poweredOn:
+            centralIsOn = true
             centralManager.scanForPeripherals(withServices: [serviceUUID], options: nil)
         @unknown default:
             break
@@ -74,18 +84,24 @@ extension BTService: CBCentralManagerDelegate {
     }
     
     func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
-        central.connect(peripheral, options: nil)
-        
         guard let name = peripheral.name else { return }
         if !discoveredPeripherals.contains(name) {
+            print("appending to discoveredPeripherals, which currently has count: \(discoveredPeripherals.count)")
             discoveredPeripherals.append(name)
         }
+
+        central.connect(peripheral, options: nil)
+        
 
     }
     
     func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
         peripheral.discoverServices([serviceUUID])
         peripheral.readRSSI()
+    }
+    
+    func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
+        print("didDisconnect with peripheral: \(String(describing: peripheral.name))")
     }
     
     
@@ -114,13 +130,20 @@ extension BTService: CBPeripheralManagerDelegate {
         case .unauthorized:
             break
         case .poweredOff:
-            break
+            peripheral.stopAdvertising()
         case .poweredOn:
+            peripheralManagerIsOn = true
+            addService()
             startBroadcasting()
         @unknown default:
             break
         }
     }
+    
+    func peripheralManagerDidStartAdvertising(_ peripheral: CBPeripheralManager, error: Error?) {
+        print("did start advertising")
+    }
+    
     
     
     

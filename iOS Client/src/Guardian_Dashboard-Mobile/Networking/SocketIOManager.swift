@@ -14,12 +14,16 @@ class SocketIOManager: NSObject {
     
     let manager = SocketManager(socketURL: URL(string: "http://192.168.43.30:3001")!, config: [.log(true), .compress])
     var socket: SocketIOClient { return manager.defaultSocket }
+    var connected = true
+    var btUsers: [BTLE] = []
+    var updateInterval: TimeInterval = 5
     
     func connect(withMessage message: String = "default message") {
         addHandlers(message: message)
         socket.connect()
-        Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { (timer) in
-            self.sendJSON(with: message)
+        Timer.scheduledTimer(withTimeInterval: updateInterval, repeats: true) { (timer) in
+            self.sendJSON(with: message, connectionStatus: /*connected ? "connected" : "disconnected"*/"connected")
+//            connected.toggle()
         }
     }
     
@@ -42,10 +46,10 @@ class SocketIOManager: NSObject {
     }
     
     //TODO: send this intially, and when there is any sensor value change
-    func sendJSON(with message: String) {
+    func sendJSON(with message: String, connectionStatus: String = "connected", newBTLEUsers: [BTLE] = []) {
         //TODO: sending JSON goes here, as message
         let deviceAndSensors = DeviceAndSensors(UUID: message,
-                                                LTE: LTE(connectionStatus: "connected", provider: "AT&T"),
+                                                LTE: LTE(connectionStatus: connectionStatus, provider: "AT&T"),
                                                 BLE: [BTLE(deviceName: "John's iphone", sigStrength: "proximate", btSystem: "BLE"),
                                                       BTLE(deviceName: "ABCDE", sigStrength: "weak", btSystem: "BLE")],
                                                 NFC: NFC(status: "on", scans: [NFC.Scan(tagType: "mifare", timestamp: "1572749269"),
