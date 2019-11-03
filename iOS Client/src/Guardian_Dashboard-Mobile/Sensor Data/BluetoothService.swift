@@ -19,6 +19,7 @@ class BTService: NSObject {
     var centralManager: CBCentralManager!
     var peripheralManager: CBPeripheralManager!
     var delegate: BTServiceUpdateDelegate?
+    var discoveredPeripherals: [String] = []
     
     let serviceUUID: CBUUID = CBUUID(string: "499f2d6a-0672-4df2-9bb7-a330b87ab466")
     
@@ -29,12 +30,19 @@ class BTService: NSObject {
         Timer.scheduledTimer(withTimeInterval: 10, repeats: true) { [unowned self] (timer) in
             self.updater()
         }
-        addService()
+        startBroadcasting()
     }
     
     func updater() {
-        delegate?.btUpdateResponse()
         centralManager.scanForPeripherals(withServices: [serviceUUID], options: nil)
+        
+        delegate?.btUpdateResponse()
+    }
+    
+    func startBroadcasting() {
+        addService()
+        
+        peripheralManager.startAdvertising(nil)
     }
     
     func addService() {
@@ -65,15 +73,31 @@ extension BTService: CBCentralManagerDelegate {
         }
     }
     
-    func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
-        <#code#>
+    func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
+        central.connect(peripheral, options: nil)
+        if !discoveredPeripherals.contains(peripheral.name) {
+            discoveredPeripherals.append(peripheral.name)
+        }
+
+    }
+    
+    func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
+        peripheral.discoverServices([serviceUUID])
+        peripheral.readRSSI()
     }
     
     
 }
 
 extension BTService: CBPeripheralDelegate {
-    
+    func peripheral(_ peripheral: CBPeripheral, didDiscoverServices error: Error?) {
+        guard let services = peripheral.services else { return }
+        for service in services {
+            if service.characteristics != nil {
+                peripheral.discoverCharacteristics(nil, for: service)
+            }
+        }
+    }
 }
 
 extension BTService: CBPeripheralManagerDelegate {
@@ -90,11 +114,13 @@ extension BTService: CBPeripheralManagerDelegate {
         case .poweredOff:
             break
         case .poweredOn:
-            peripheralManager.
+            startBroadcasting()
         @unknown default:
-            <#code#>
+            break
         }
     }
+    
+    
     
     
 }
