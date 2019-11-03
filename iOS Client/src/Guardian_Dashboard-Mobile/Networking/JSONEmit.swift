@@ -9,63 +9,185 @@
 import Foundation
 
 /*{
-    'UUID' : 'xxxx-xxxxx-xxxxxxxx',
-    ‘LTE’  :  {
-        connectionStatus : ‘online’,
-        signal_strength : ’20’,
-        provider : ‘AT&T’,
+  "UUID": "297b42a9-9e31-43db-b436-f7b61a55688a",
+  "LTE": {
+    "provider": "first net",
+    "connectionStatus": "disconnected"
+  },
+  "BLE": [
+    {
+      "deviceName": "Headphonexyz",
+      "sigStrength": "20",
+      "protocol": "BLE"
     },
-    'BLE’ : [
-            { ‘device_name’ : ‘headphones_xyz’ , ‘connection_strength’ : ’30’, ‘bluetooth_mode’ : ‘classic’},
-            { ‘device_name’ : ‘radio_3’ , ‘connection_strength’ : ’90’, ‘bluetooth_mode’ : ‘BLEv4.2’}
-    ],
-    ‘NFC’ : {
-        data_transmitted : [
-            {‘payload’ : ‘obj’ , ’timestamp’ : ‘123124123’},
-            {‘payload’ : ‘obj’ , ’timestamp’ : ‘123124123’},
-            {‘payload’ : ‘obj’ , ’timestamp’ : ‘123124123’}
-         ]
-    },
-    ‘HRD_ENC' : {
-        ‘encryption_status’ : ‘on'
-    },
-    ‘VPN' : {
-        ‘current_connection' : { ‘connection_name’ : ‘openVPN_123’ , ’timestamp’ : ‘123123123123’ },
-        ‘recent_connection’ : [
-            { ‘connection_name’ : ‘openVPN_321’, ’timestamp’ : ‘321321321’ },
-            { ‘connection_name’ : ‘openVPN_322’, ’timestamp’ : ‘321323222’ },
-            { ‘connection_name’ : ‘openVPN_324’, ’timestamp’ : ‘321324323’ }
-        ]
-    },
-    ‘WIFI’ : {
-        ‘current_connection' : { ‘wifi_name’ : ’Starbucks’ , ’timestamp’ : ‘123123123123’, ‘connection_strength’ : ’25’, ’security’ : ‘WP2_PSK’, ‘protocol’ : ‘2ghz’ },
-        ‘recent_connection’ : [
-            { ‘wifi_name’ : ’Google_Campus_public’ , ’timestamp’ : ‘12323232’, ’security’ : ‘WP2_PSK’, ‘protocol’ : ‘2ghz’ },
-            { ‘wifi_name’ : ’Starbucks_gg’ , ’timestamp’ : ‘2323223’, ’security’ : ‘WP2_PSK’, ‘protocol’ : ‘5ghz’ },
-        ]
-    },
-    ‘GPS’ : {
-        ’gps_status’ : ‘on’,
-        ‘current_position’ : { ‘long’ : ’12.3’, ‘lat’ : ’23.3’ },
-        ‘gps_type’ : ‘glonass'
-    },
-    ‘AV’ : {
-        ’status’ : ‘on'
-    },
-    ‘MDM’ : {
-        ’status’ : ‘on’,
-        ‘profile’ : ‘emergency_xyz'
+    {
+      "deviceName": "smart ring",
+      "sigStrength": "10",
+      "protocol": "Classic"
     }
+  ],
+  "NFC": {
+    "status": "on",
+    "scans": [
+      {
+        "tagType": "mifare",
+        "timestamp": "1572749269"
+      },
+      {
+        "tagType": "ndef",
+        "timestamp": "1572749266"
+      }
+    ]
+  },
+  "HRD_ENC": {
+    "encryptionStatus": "on"
+  },
+  "VPN": {
+    "currentConnection": {
+      "connectionName": "firstNetVPN111",
+      "timestamp": "1572749266"
+    },
+    "recentConnection": [
+      {
+        "connectionName": "firstNetVPN123",
+        "timestamp": "1572759266"
+      },
+      {
+        "connectionName": "firstNetVPN161",
+        "timestamp": "1572142666"
+      }
+    ]
+  },
+  "WIFI": {
+    "currentConnection": {
+      "connectionName": "starbucks",
+      "timestamp": "1572759266",
+      "connectionStrength": "23",
+      "security": "wp2_psk",
+      "protocol": "2ghz"
+    },
+    "recentConnection": [
+      {
+        "connectionName": "google",
+        "timestamp": "157275466",
+        "security": "wp2_psk",
+        "protocol": "2ghz"
+      },
+      {
+        "connectionName": "topgear",
+        "timestamp": "152275466",
+        "security": "wp2_psk",
+        "protocol": "5ghz"
+      }
+    ]
+  },
+  "GPS": {
+    "gpsStatus": "on",
+    "currentPosition": {
+      "long": "12",
+      "lat": "23"
+    }
+  },
+  "AV": {
+    "status": "on"
+  },
+  "MDM": {
+    "status": "on",
+    "profile": "first responder mdm 111"
+  }
 }
 */
 
 struct DeviceAndSensors: Codable {
-    let uuid: String
-    let lte: LTE
+    let UUID: String
+    let LTE: LTE
+//    let BLE: [BTLE]
+//    let NFC: NFC
+//    let HRD_ENC: Encryption
+//    let VPN: VPN
+//    let WIFI: WIFI
 }
 
 struct LTE: Codable {
     let connectionStatus: String
-    let signal_strength: String
     let provider: String
 }
+
+struct BTLE: Codable {
+    let deviceName: String
+    let sigStrength: String
+    let btSystem: String
+
+    enum CodingKeys: String, CodingKey {
+        case deviceName
+        case sigStrength
+        case btSystem = "protocol"
+    }
+}
+
+struct NFC: Codable {
+    let status: String
+    let scans: [Scan]
+    
+    struct Scan: Codable {
+        let tagType: String
+        let timestamp: String
+    }
+}
+    
+struct Encryption: Codable {
+    let encryptionStatus: String
+}
+
+struct VPN: Codable {
+    let currentConnection: CurrentConnection
+    let recentConnection: [RecentConnection]
+    
+    struct CurrentConnection: Codable {
+        let connectionName: String
+        let timestamp: String
+    }
+    
+    struct RecentConnection: Codable {
+        let connectionName: String
+        let timestamp: String
+    }
+}
+
+struct WIFI: Codable {
+    let currentConnection: CurrentConnection
+    let recentConnection: [RecentConnection]
+
+    struct CurrentConnection: Codable {
+        let connectionName: String
+        let timestamp: String
+        let connectionStrength: String
+        let security: String
+        let networkSystem: String
+        
+        enum CodingKeys: String, CodingKey {
+            case connectionName
+            case timestamp
+            case connectionStrength
+            case security
+            case networkSystem = "protocol"
+        }
+    }
+    
+    struct RecentConnection: Codable {
+        let connectionName: String
+        let timestamp: String
+        let security: String
+        let networkSystem: String
+        
+        enum CodingKeys: String, CodingKey {
+            case connectionName
+            case timestamp
+            case security
+            case networkSystem = "protocol"
+        }
+    }
+}
+
+
+

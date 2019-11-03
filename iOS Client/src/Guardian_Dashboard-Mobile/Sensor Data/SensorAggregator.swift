@@ -7,14 +7,22 @@
 //
 
 import Foundation
+import CoreBluetooth
+import CoreLocation
+import CoreTelephony
 
 class SensorAggregator: NSObject {
+    //Sensor frameworks
     let btService = BTService.btManager
+    let locationService = LocationService.sharedInstance
+    let cellService = CellularServiceInfo()
     
+    //Sensor data
     var discoveredBTLEPeripherals: [String] = []
+    var currentLocation: CLLocation? { return locationService.currentLocation }
 }
 
-extension BTServiceUpdateDelegate {
+extension SensorAggregator: BTServiceUpdateDelegate {
     func btUpdateResponse() {
         discoveredBTLEPeripherals = btService.discoveredPeripherals
     }

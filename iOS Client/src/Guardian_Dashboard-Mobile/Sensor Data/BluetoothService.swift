@@ -65,7 +65,7 @@ extension BTService: CBCentralManagerDelegate {
         case .unauthorized:
             break
         case .poweredOff:
-            break
+            centralManager.stopScan()
         case .poweredOn:
             centralManager.scanForPeripherals(withServices: [serviceUUID], options: nil)
         @unknown default:
@@ -75,8 +75,10 @@ extension BTService: CBCentralManagerDelegate {
     
     func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
         central.connect(peripheral, options: nil)
-        if !discoveredPeripherals.contains(peripheral.name) {
-            discoveredPeripherals.append(peripheral.name)
+        
+        guard let name = peripheral.name else { return }
+        if !discoveredPeripherals.contains(name) {
+            discoveredPeripherals.append(name)
         }
 
     }

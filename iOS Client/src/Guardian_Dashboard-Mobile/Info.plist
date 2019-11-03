@@ -66,6 +66,10 @@
 		<true/>
 	</dict>
 	<key>NSBluetoothAlwaysUsageDescription</key>
-	<string>Guardian Dashboard Mobile needs access Bluetooth to connect with other Bluetooth devices</string>
+	<string>Guardian Dashboard Mobile needs to access Bluetooth to connect with other Bluetooth devices</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Guardian Dashboard Mobile needs access to location services to track your location</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Guardian Dashboard Mobile needs access to location services to track your location</string>
 </dict>
 </plist>

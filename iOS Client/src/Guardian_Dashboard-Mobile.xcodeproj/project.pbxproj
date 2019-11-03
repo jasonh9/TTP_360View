@@ -16,6 +16,7 @@
 		7276DFF4236E64F9001C6FBF /* SensorAggregator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7276DFF3236E64F9001C6FBF /* SensorAggregator.swift */; };
 		7276DFF6236E75D6001C6FBF /* BluetoothService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7276DFF5236E75D6001C6FBF /* BluetoothService.swift */; };
 		7276DFF9236E7AC2001C6FBF /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7276DFF8236E7AC2001C6FBF /* LocationService.swift */; };
+		72956DA3236E873200D57EA6 /* CellularServiceInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72956DA2236E873200D57EA6 /* CellularServiceInfo.swift */; };
 		72E9F164236D0BE00035D11F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72E9F163236D0BE00035D11F /* Constants.swift */; };
 		72F1F6CC236CEF45005AD7FB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F1F6CB236CEF45005AD7FB /* AppDelegate.swift */; };
 		72F1F6CE236CEF45005AD7FB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F1F6CD236CEF45005AD7FB /* SceneDelegate.swift */; };
@@ -34,6 +35,7 @@
 		7276DFF3236E64F9001C6FBF /* SensorAggregator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SensorAggregator.swift; path = "Guardian_Dashboard-Mobile/Sensor Data/SensorAggregator.swift"; sourceTree = SOURCE_ROOT; };
 		7276DFF5236E75D6001C6FBF /* BluetoothService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothService.swift; sourceTree = "<group>"; };
 		7276DFF8236E7AC2001C6FBF /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
+		72956DA2236E873200D57EA6 /* CellularServiceInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellularServiceInfo.swift; sourceTree = "<group>"; };
 		72E9F163236D0BE00035D11F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		72F1F6C8236CEF45005AD7FB /* Guardian_Dashboard-Mobile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Guardian_Dashboard-Mobile.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		72F1F6CB236CEF45005AD7FB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 				7276DFF3236E64F9001C6FBF /* SensorAggregator.swift */,
 				7276DFF5236E75D6001C6FBF /* BluetoothService.swift */,
 				7276DFF8236E7AC2001C6FBF /* LocationService.swift */,
+				72956DA2236E873200D57EA6 /* CellularServiceInfo.swift */,
 			);
 			path = "Sensor Data";
 			sourceTree = "<group>";
@@ -227,6 +230,7 @@
 				7276DFF1236E4E5C001C6FBF /* JSONEmit.swift in Sources */,
 				7276DFE4236D29B6001C6FBF /* DashboardItem.swift in Sources */,
 				72F1F6CC236CEF45005AD7FB /* AppDelegate.swift in Sources */,
+				72956DA3236E873200D57EA6 /* CellularServiceInfo.swift in Sources */,
 				72F1F6CE236CEF45005AD7FB /* SceneDelegate.swift in Sources */,
 				7276DFF9236E7AC2001C6FBF /* LocationService.swift in Sources */,
 				72E9F164236D0BE00035D11F /* Constants.swift in Sources */,

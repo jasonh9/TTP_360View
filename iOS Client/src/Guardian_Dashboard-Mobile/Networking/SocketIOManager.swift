@@ -18,6 +18,9 @@ class SocketIOManager: NSObject {
     func connect(withMessage message: String = "default message") {
         addHandlers(message: message)
         socket.connect()
+        Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { (timer) in
+            self.sendJSON(with: message)
+        }
     }
     
     //TODO: add all values to send here
@@ -31,26 +34,28 @@ class SocketIOManager: NSObject {
         
         socket.on(message) {[weak self] (data, emitter) in
             print("received callback with data: \(data)")
-            if let dict = data.first as? NSDictionary, let response = dict["response"] as? String, response == ServerResponse.alreadyRegistered {
-                print("can be dict, all keys: \(dict.allKeys), values: \(dict.allValues), value for response key: \(dict["response"])")
-                self?.sendJSON(with: message)
+            if let dict = data.first as? NSDictionary, let response = dict["response"] as? String {
+                print("can be dict, all keys: \(dict.allKeys), values: \(dict.allValues), value for response key: \(response)")
             }
             
         }
     }
     
+    //TODO: send this intially, and when there is any sensor value change
     func sendJSON(with message: String) {
         //TODO: sending JSON goes here, as message
-        let deviceAndSensors = DeviceAndSensors(uuid: message, lte: LTE(connectionStatus: "connected", signal_strength: "strong", provider: "AT&T"))
+        let deviceAndSensors = DeviceAndSensors(UUID: message,
+                                                LTE: LTE(connectionStatus: "connected",
+                                                         provider: "AT&T"))
         
         let encoder = JSONEncoder()
-//        encoder.outputFormatting = .prettyPrinted
+        encoder.outputFormatting = .prettyPrinted
 
         do {
             let sendingData = try encoder.encode(deviceAndSensors)
             let dataAsString = String(data: sendingData, encoding: .utf8) ?? "value is nil"
-            self.socket.emit("clientData", sendingData)
-            print("sent data")
+            self.socket.emit("clientData", dataAsString)
+            print("sent data, sendingData: \(dataAsString)")
         } catch let e {
             print(e.localizedDescription)
         }
