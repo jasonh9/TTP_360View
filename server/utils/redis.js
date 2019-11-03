@@ -6,12 +6,14 @@ const server = new RedisServer({
     bin: '../../third_party/redis-stable/src/redis-server'
 });
 
-function start(){
-    server.open((err) => {
-        err === null ? console.log('redis server up and running') : console.log(err)
-    });
-}
+server.open().then((err) => {
+    // You may now connect a client to the Redis server bound to `server.port`.
+    err === null ? console.log('redis server up and running in promise') : console.log(err)
+});
 
+server.on('stdout', (msg) => {
+    console.log(msg)
+})
 
 process.on('SIGINT', function() {
     console.log("Caught interrupt signal");
@@ -19,5 +21,3 @@ process.on('SIGINT', function() {
         console.log('Graceful shutdown of redis ...');
     })
 });
-
-module.exports = {start}

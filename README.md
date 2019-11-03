@@ -6,6 +6,8 @@ This project will consist of 3 main components, a server receive and send commun
 * Mobile Client
 * Web Dashboard
 
+# Pre-req
+The project is using redis to manage the data structure, check the integrity of the service by intantiating a `make test` within the directory `third-party/redis-stable/`
 
 # Resources
 https://www.techtoprotectchallenge.org/contest/contest-001/
