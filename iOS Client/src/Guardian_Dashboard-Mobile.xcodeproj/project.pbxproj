@@ -10,7 +10,10 @@
 		721A3F50236D1B63002BF83F /* DashboardItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721A3F4F236D1B63002BF83F /* DashboardItemCollectionViewCell.swift */; };
 		7276DFE4236D29B6001C6FBF /* DashboardItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7276DFE3236D29B6001C6FBF /* DashboardItem.swift */; };
 		7276DFE7236E2C33001C6FBF /* SocketIO in Frameworks */ = {isa = PBXBuildFile; productRef = 7276DFE6236E2C33001C6FBF /* SocketIO */; };
-		7276DFE9236E2C52001C6FBF /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7276DFE8236E2C52001C6FBF /* Networking.swift */; };
+		7276DFE9236E2C52001C6FBF /* SocketIOManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7276DFE8236E2C52001C6FBF /* SocketIOManager.swift */; };
+		7276DFEF236E351E001C6FBF /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7276DFEE236E351E001C6FBF /* Default-568h@2x.png */; };
+		7276DFF1236E4E5C001C6FBF /* JSONEmit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7276DFF0236E4E5C001C6FBF /* JSONEmit.swift */; };
+		7276DFF4236E64F9001C6FBF /* BluetoothService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7276DFF3236E64F9001C6FBF /* BluetoothService.swift */; };
 		72E9F164236D0BE00035D11F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72E9F163236D0BE00035D11F /* Constants.swift */; };
 		72F1F6CC236CEF45005AD7FB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F1F6CB236CEF45005AD7FB /* AppDelegate.swift */; };
 		72F1F6CE236CEF45005AD7FB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F1F6CD236CEF45005AD7FB /* SceneDelegate.swift */; };
@@ -23,7 +26,10 @@
 /* Begin PBXFileReference section */
 		721A3F4F236D1B63002BF83F /* DashboardItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardItemCollectionViewCell.swift; sourceTree = "<group>"; };
 		7276DFE3236D29B6001C6FBF /* DashboardItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardItem.swift; sourceTree = "<group>"; };
-		7276DFE8236E2C52001C6FBF /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
+		7276DFE8236E2C52001C6FBF /* SocketIOManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketIOManager.swift; sourceTree = "<group>"; };
+		7276DFEE236E351E001C6FBF /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		7276DFF0236E4E5C001C6FBF /* JSONEmit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONEmit.swift; sourceTree = "<group>"; };
+		7276DFF3236E64F9001C6FBF /* BluetoothService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothService.swift; sourceTree = SOURCE_ROOT; };
 		72E9F163236D0BE00035D11F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		72F1F6C8236CEF45005AD7FB /* Guardian_Dashboard-Mobile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Guardian_Dashboard-Mobile.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		72F1F6CB236CEF45005AD7FB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -47,9 +53,56 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7276DFEA236E34A6001C6FBF /* App Lifecycle */ = {
+			isa = PBXGroup;
+			children = (
+				72F1F6CB236CEF45005AD7FB /* AppDelegate.swift */,
+				72F1F6CD236CEF45005AD7FB /* SceneDelegate.swift */,
+			);
+			path = "App Lifecycle";
+			sourceTree = "<group>";
+		};
+		7276DFEB236E34C5001C6FBF /* View & Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				72F1F6CF236CEF45005AD7FB /* DashboardViewController.swift */,
+				72F1F6D1236CEF45005AD7FB /* Main.storyboard */,
+				721A3F4F236D1B63002BF83F /* DashboardItemCollectionViewCell.swift */,
+			);
+			path = "View & Controllers";
+			sourceTree = "<group>";
+		};
+		7276DFEC236E34DF001C6FBF /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				72F1F6D4236CEF46005AD7FB /* Assets.xcassets */,
+				72F1F6D6236CEF46005AD7FB /* LaunchScreen.storyboard */,
+			);
+			path = "Support Files";
+			sourceTree = "<group>";
+		};
+		7276DFED236E34EC001C6FBF /* Model & Constants */ = {
+			isa = PBXGroup;
+			children = (
+				7276DFE3236D29B6001C6FBF /* DashboardItem.swift */,
+				72E9F163236D0BE00035D11F /* Constants.swift */,
+			);
+			path = "Model & Constants";
+			sourceTree = "<group>";
+		};
+		7276DFF2236E4EEC001C6FBF /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				7276DFE8236E2C52001C6FBF /* SocketIOManager.swift */,
+				7276DFF0236E4E5C001C6FBF /* JSONEmit.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
 		72F1F6BF236CEF45005AD7FB = {
 			isa = PBXGroup;
 			children = (
+				7276DFEE236E351E001C6FBF /* Default-568h@2x.png */,
 				72F1F6CA236CEF45005AD7FB /* Guardian_Dashboard-Mobile */,
 				72F1F6C9236CEF45005AD7FB /* Products */,
 			);
@@ -66,17 +119,13 @@
 		72F1F6CA236CEF45005AD7FB /* Guardian_Dashboard-Mobile */ = {
 			isa = PBXGroup;
 			children = (
-				72F1F6CB236CEF45005AD7FB /* AppDelegate.swift */,
-				72F1F6CD236CEF45005AD7FB /* SceneDelegate.swift */,
-				72F1F6CF236CEF45005AD7FB /* DashboardViewController.swift */,
-				72F1F6D1236CEF45005AD7FB /* Main.storyboard */,
-				721A3F4F236D1B63002BF83F /* DashboardItemCollectionViewCell.swift */,
-				7276DFE8236E2C52001C6FBF /* Networking.swift */,
-				7276DFE3236D29B6001C6FBF /* DashboardItem.swift */,
-				72E9F163236D0BE00035D11F /* Constants.swift */,
-				72F1F6D4236CEF46005AD7FB /* Assets.xcassets */,
-				72F1F6D6236CEF46005AD7FB /* LaunchScreen.storyboard */,
+				7276DFF3236E64F9001C6FBF /* BluetoothService.swift */,
+				7276DFEA236E34A6001C6FBF /* App Lifecycle */,
+				7276DFEB236E34C5001C6FBF /* View & Controllers */,
+				7276DFF2236E4EEC001C6FBF /* Networking */,
+				7276DFED236E34EC001C6FBF /* Model & Constants */,
 				72F1F6D9236CEF46005AD7FB /* Info.plist */,
+				7276DFEC236E34DF001C6FBF /* Support Files */,
 			);
 			path = "Guardian_Dashboard-Mobile";
 			sourceTree = "<group>";
@@ -146,6 +195,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				72F1F6D8236CEF46005AD7FB /* LaunchScreen.storyboard in Resources */,
+				7276DFEF236E351E001C6FBF /* Default-568h@2x.png in Resources */,
 				72F1F6D5236CEF46005AD7FB /* Assets.xcassets in Resources */,
 				72F1F6D3236CEF45005AD7FB /* Main.storyboard in Resources */,
 			);
@@ -160,11 +210,13 @@
 			files = (
 				721A3F50236D1B63002BF83F /* DashboardItemCollectionViewCell.swift in Sources */,
 				72F1F6D0236CEF45005AD7FB /* DashboardViewController.swift in Sources */,
+				7276DFF1236E4E5C001C6FBF /* JSONEmit.swift in Sources */,
 				7276DFE4236D29B6001C6FBF /* DashboardItem.swift in Sources */,
 				72F1F6CC236CEF45005AD7FB /* AppDelegate.swift in Sources */,
 				72F1F6CE236CEF45005AD7FB /* SceneDelegate.swift in Sources */,
 				72E9F164236D0BE00035D11F /* Constants.swift in Sources */,
-				7276DFE9236E2C52001C6FBF /* Networking.swift in Sources */,
+				7276DFF4236E64F9001C6FBF /* BluetoothService.swift in Sources */,
+				7276DFE9236E2C52001C6FBF /* SocketIOManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
