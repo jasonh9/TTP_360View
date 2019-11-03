@@ -20,6 +20,7 @@ class SensorAggregator: NSObject {
     //Sensor data
     var discoveredBTLEPeripherals: [String] = []
     var currentLocation: CLLocation? { return locationService.currentLocation }
+    var providerName: String? { return cellService.carrier.carrierName }
 }
 
 extension SensorAggregator: BTServiceUpdateDelegate {

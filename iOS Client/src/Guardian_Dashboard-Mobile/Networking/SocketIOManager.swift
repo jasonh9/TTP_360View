@@ -32,7 +32,7 @@ class SocketIOManager: NSObject {
             self.socket.emit("register", message)
         }
         
-        socket.on(message) {[weak self] (data, emitter) in
+        socket.on(message) { (data, emitter) in
             print("received callback with data: \(data)")
             if let dict = data.first as? NSDictionary, let response = dict["response"] as? String {
                 print("can be dict, all keys: \(dict.allKeys), values: \(dict.allValues), value for response key: \(response)")
@@ -45,8 +45,20 @@ class SocketIOManager: NSObject {
     func sendJSON(with message: String) {
         //TODO: sending JSON goes here, as message
         let deviceAndSensors = DeviceAndSensors(UUID: message,
-                                                LTE: LTE(connectionStatus: "connected",
-                                                         provider: "AT&T"))
+                                                LTE: LTE(connectionStatus: "connected", provider: "AT&T"),
+                                                BLE: [BTLE(deviceName: "John's iphone", sigStrength: "proximate", btSystem: "BLE"),
+                                                      BTLE(deviceName: "ABCDE", sigStrength: "weak", btSystem: "BLE")],
+                                                NFC: NFC(status: "on", scans: [NFC.Scan(tagType: "mifare", timestamp: "1572749269"),
+                                                                               NFC.Scan(tagType: "ndef", timestamp: "1572749266")]),
+                                                HRD_ENC: Encryption(encryptionStatus: "on"),
+                                                VPN: VPN(currentConnection: VPN.CurrentConnection(connectionName: "firstNetVPN111", timestamp: "1572749266"),
+                                                         recentConnection: [VPN.RecentConnection(connectionName: "firstNetVPN123", timestamp: "1572759266"), VPN.RecentConnection(connectionName: "firstNetVPN161", timestamp: "1572142666")]),
+                                                WIFI: WIFI(currentConnection: WIFI.CurrentConnection(connectionName: "starbucks", timestamp: "1572759266", connectionStrength: "23", security: "wp2_psk", networkSystem: "2ghz"),
+                                                           recentConnection: [WIFI.RecentConnection(connectionName: "google", timestamp: "157275466", security: "wp2_psk", networkSystem: "2ghz"), WIFI.RecentConnection(connectionName: "topgear", timestamp: "152275466", security: "wp2_psk", networkSystem: "5ghz")]),
+                                                GPS: GPS(gpsStatus: "on", currentPosition: GPS.CurrentPosition(long: "12.1738452", lat: "23.83957291")),
+                                                AV: AntiVirus(status: "on"),
+                                                MDM: MDM(status: "on", profile: "first responder mdm 111"))
+            
         
         let encoder = JSONEncoder()
         encoder.outputFormatting = .prettyPrinted
@@ -57,7 +69,7 @@ class SocketIOManager: NSObject {
             self.socket.emit("clientData", dataAsString)
             print("sent data, sendingData: \(dataAsString)")
         } catch let e {
-            print(e.localizedDescription)
+            print("error encoding: \(e.localizedDescription)")
         }
     }
     

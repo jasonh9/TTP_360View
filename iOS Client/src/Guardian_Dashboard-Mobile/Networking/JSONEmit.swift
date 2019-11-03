@@ -101,11 +101,14 @@ import Foundation
 struct DeviceAndSensors: Codable {
     let UUID: String
     let LTE: LTE
-//    let BLE: [BTLE]
-//    let NFC: NFC
-//    let HRD_ENC: Encryption
-//    let VPN: VPN
-//    let WIFI: WIFI
+    let BLE: [BTLE]
+    let NFC: NFC
+    let HRD_ENC: Encryption
+    let VPN: VPN
+    let WIFI: WIFI
+    let GPS: GPS
+    let AV: AntiVirus
+    let MDM: MDM
 }
 
 struct LTE: Codable {
@@ -189,5 +192,23 @@ struct WIFI: Codable {
     }
 }
 
+struct GPS: Codable {
+    let gpsStatus: String
+    let currentPosition: CurrentPosition
+    
+    struct CurrentPosition: Codable {
+        let long: String
+        let lat: String
+    }
+}
+
+struct AntiVirus: Codable {
+    let status: String
+}
+
+struct MDM: Codable {
+    let status: String
+    let profile: String
+}
 
 
