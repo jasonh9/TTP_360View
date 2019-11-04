@@ -106,15 +106,26 @@ io.on('connection', (socket) => {
     // get data from user and load it in a hashmap
     socket.on('clientData' , (payload) => {
         let validatedPayload = typeof(payload) === 'string' ? JSON.parse(payload) : payload;
-        console.log(validatedPayload)
+        // console.log(validatedPayload)
         const processData = () => {
             sendValidResponse(validatedPayload.UUID);
             const processSensor = (keys, validatedPayload) => {
                 // console.log(payload.UUID, keys, payload[keys])
                 // console.log(`${payload.UUID}, ${keys}, ${JSON.stringify(payload[keys])}`)
+                const processChildValues = (value) => {
+                    console.log('value from processChildValues', value)
+                    Object.keys(value).forEach( (val)=> {
+                        return typeof(value[val]) !== 'object' ? val : 'false';
+                    })
+                }
+                const processChild = (keys, child, value) =>{
+                    console.log(`${keys}_${child}_${processChildValues(value)}`)
+                    // console.log('value from processChild ', value, 'the key for the value is ', keys, 'child', child)
+                    // RedisClient.HSET(validatedPayload.UUID, `${keys}_${child}`,  )
+                }
                 Object.keys(pay = validatedPayload[keys]).forEach( (value) => {
                     // typeof(pay[value]) !== 'object' ? console.log(keys , ' -> ', value , ' - ', pay[value]) : false
-                    typeof(pay[value]) !== 'object' ? RedisClient.HSET(validatedPayload.UUID, `${keys}_${value}`, `${pay[value]}`) : false;
+                    typeof(pay[value]) !== 'object' ? RedisClient.HSET(validatedPayload.UUID, `${keys}_${value}`, `${pay[value]}`) : processChild(keys, value, pay[value]);
                 })
 
             }
@@ -126,7 +137,7 @@ io.on('connection', (socket) => {
             
             RedisClient.HGETALL(validatedPayload.UUID, (err, reply) => {
                 socket.broadcast.emit(validatedPayload.UUID, reply);
-                console.log(reply)
+                console.log('reply from hgetALL', reply)
             })
         }
 
