@@ -52,7 +52,7 @@
 		72B10B21236F262B00CF4DBA /* VPNConnectionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPNConnectionsViewController.swift; sourceTree = "<group>"; };
 		72B10B23236F264F00CF4DBA /* WiFiConnectionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiFiConnectionsViewController.swift; sourceTree = "<group>"; };
 		72B10B27236F2CCD00CF4DBA /* NFCTransmissionsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFCTransmissionsTableViewCell.swift; sourceTree = "<group>"; };
-		72B10B29236F2D0A00CF4DBA /* VPNConnectionsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VPNConnectionsTableViewCell.swift; path = "Guardian_Dashboard-Mobile/VPNConnectionsTableViewCell.swift"; sourceTree = SOURCE_ROOT; };
+		72B10B29236F2D0A00CF4DBA /* VPNConnectionsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VPNConnectionsTableViewCell.swift; path = "Guardian_Dashboard-Mobile/View & Controllers/Cells/VPNConnectionsTableViewCell.swift"; sourceTree = SOURCE_ROOT; };
 		72B10B2B236F2D2A00CF4DBA /* WifiConnectionsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WifiConnectionsTableViewCell.swift; sourceTree = "<group>"; };
 		72BFD0C8236F33DB0099F58B /* VPNRecentConnectionsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPNRecentConnectionsTableViewCell.swift; sourceTree = "<group>"; };
 		72BFD0CA236F37E60099F58B /* WiFiRecentConnectionsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiFiRecentConnectionsTableViewCell.swift; sourceTree = "<group>"; };
@@ -91,19 +91,13 @@
 		7276DFEB236E34C5001C6FBF /* View & Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				72BFD0CA236F37E60099F58B /* WiFiRecentConnectionsTableViewCell.swift */,
-				72B10B29236F2D0A00CF4DBA /* VPNConnectionsTableViewCell.swift */,
-				72B10B2B236F2D2A00CF4DBA /* WifiConnectionsTableViewCell.swift */,
+				72DED3E4236FB99F00297E7A /* Cells */,
 				72F1F6CF236CEF45005AD7FB /* DashboardViewController.swift */,
 				721401CC236EF54000DB7A28 /* BTUsersViewController.swift */,
 				72B10B21236F262B00CF4DBA /* VPNConnectionsViewController.swift */,
 				72B10B23236F264F00CF4DBA /* WiFiConnectionsViewController.swift */,
 				72B10B1F236F25FF00CF4DBA /* NFCTransmissionsViewController.swift */,
-				72B10B27236F2CCD00CF4DBA /* NFCTransmissionsTableViewCell.swift */,
-				72BFD0C8236F33DB0099F58B /* VPNRecentConnectionsTableViewCell.swift */,
-				721401CE236EF89F00DB7A28 /* BTUserTableViewCell.swift */,
 				72F1F6D1236CEF45005AD7FB /* Main.storyboard */,
-				721A3F4F236D1B63002BF83F /* DashboardItemCollectionViewCell.swift */,
 			);
 			path = "View & Controllers";
 			sourceTree = "<group>";
@@ -144,6 +138,20 @@
 				72956DA2236E873200D57EA6 /* CellularServiceInfo.swift */,
 			);
 			path = "Sensor Data";
+			sourceTree = "<group>";
+		};
+		72DED3E4236FB99F00297E7A /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				72BFD0CA236F37E60099F58B /* WiFiRecentConnectionsTableViewCell.swift */,
+				72B10B29236F2D0A00CF4DBA /* VPNConnectionsTableViewCell.swift */,
+				72B10B2B236F2D2A00CF4DBA /* WifiConnectionsTableViewCell.swift */,
+				72B10B27236F2CCD00CF4DBA /* NFCTransmissionsTableViewCell.swift */,
+				72BFD0C8236F33DB0099F58B /* VPNRecentConnectionsTableViewCell.swift */,
+				721401CE236EF89F00DB7A28 /* BTUserTableViewCell.swift */,
+				721A3F4F236D1B63002BF83F /* DashboardItemCollectionViewCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		72F1F6BF236CEF45005AD7FB = {

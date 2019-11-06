@@ -76,11 +76,7 @@ class SocketIOManager: NSObject {
             print("error encoding: \(e.localizedDescription)")
         }
     }
-    
-    func parse(response: [String: Any])  {
-        
-    }
-        
+            
     func disconnect() {
         socket.disconnect()
     }
