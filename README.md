@@ -30,7 +30,14 @@ make sure you use the integrity hash to check your payload! this will let the ap
 * Web Dashboard
 
 # Pre-req
-The project is using redis to manage the data structure, check the integrity of the service by intantiating a `make test` within the directory `third-party/redis-stable/`
+Mongodb
+#### installing mongodb on mac
+Visit https://docs.mongodb.com/manual/tutorial/install-mongodb-on-os-x/
+
+```bash
+# start mongodb using brew
+$ brew services start mongodb-community
+```
 
 
 # Resources
