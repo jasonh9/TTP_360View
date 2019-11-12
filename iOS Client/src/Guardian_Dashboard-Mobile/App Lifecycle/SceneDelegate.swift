@@ -28,7 +28,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func sceneDidBecomeActive(_ scene: UIScene) {
         let deviceID = UIDevice.current.identifierForVendor?.uuidString ?? ""
-        socketManager.connect(withMessage: deviceID)
+        let base64ID = deviceID.data(using: .utf8)?.base64EncodedData()
+        socketManager.connect(withMessage: deviceID, encodedMessage: base64ID)
         
         btManager.setup()
         locationService.manager.startUpdatingLocation()

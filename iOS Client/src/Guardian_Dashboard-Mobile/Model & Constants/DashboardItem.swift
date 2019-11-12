@@ -8,6 +8,43 @@
 
 import UIKit
 
+protocol ActivationState {
+    var isActive: Bool { get }
+}
+
+//For WiFi and LTE
+enum SignalStrength: ActivationState {
+    case noSignal
+    case weak
+    case medium
+    case strong
+    
+    var isActive: Bool { return self != .noSignal }
+}
+
+enum BTLEConnectionStrength: ActivationState {
+    case turnedOff
+    case weak
+    case proximate
+    
+    var isActive: Bool { return self != .turnedOff }
+}
+
+enum BTClassicPairedStatus {
+    case paired
+    case notPaired
+    
+    var isActive: Bool { return self != .notPaired }
+}
+
+//For NFC, hardware encryption, VPN usage, location tracking, antivirus, MDM usage
+enum TurnedOnStatus: ActivationState {
+    case off
+    case on
+    
+    var isActive: Bool { return self != .off }
+}
+
 enum DashboardItemType {
     case lte(signalStrength: SignalStrength)
     case btle(connectionStrength: BTLEConnectionStrength)
@@ -21,30 +58,6 @@ enum DashboardItemType {
     case mdmStatus(status: TurnedOnStatus)
 }
 
-//For WiFi and LTE
-enum SignalStrength {
-    case noSignal
-    case weak
-    case medium
-    case strong
-}
-
-enum BTLEConnectionStrength {
-    case turnedOff
-    case weak
-    case proximate
-}
-
-enum BTClassicPairedStatus {
-    case paired
-    case notPaired
-}
-
-//For NFC, hardware encryption, VPN usage, location tracking, antivirus, MDM usage
-enum TurnedOnStatus {
-    case off
-    case on
-}
 
 struct DashboardItem {
     static let defaultItems: [DashboardItem] = [DashboardItem(type: .lte(signalStrength: .strong)), DashboardItem(type: .btle(connectionStrength: .proximate)), /*DashboardItem(type: .btClassic(pairedStatus: .notPaired)),*/ DashboardItem(type: .nfc(status: .on)), DashboardItem(type: .encryptionStatus(status: .off)), DashboardItem(type: .vpn(status: .off)), DashboardItem(type: .wifi(signalStrength: .medium)), DashboardItem(type: .gps(status: .on)), DashboardItem(type: .antivirusStatus(status: .off)), DashboardItem(type: .mdmStatus(status: .off))]
@@ -119,6 +132,23 @@ struct DashboardItem {
         case .antivirusStatus: return "AntiVirus"
         case .mdmStatus: return "MDM"
         }
+    }
+    
+    var notActiveImage: UIImage? {
+        let isActive: Bool
+        switch type {
+        case .lte(let signalStrength): isActive = signalStrength.isActive
+        case .btle(let connectionStrength): isActive = connectionStrength.isActive
+        case .btClassic(let pairedStatus): isActive = pairedStatus.isActive
+        case .nfc(let status): isActive = status.isActive
+        case .encryptionStatus(let status): isActive = status.isActive
+        case .vpn(let status): isActive = status.isActive
+        case .wifi(let signalStrength): isActive = signalStrength.isActive
+        case .gps(let status): isActive = status.isActive
+        case .antivirusStatus(let status): isActive = status.isActive
+        case .mdmStatus(let status): isActive = status.isActive
+        }
+        return isActive ? nil : UIImage(named: ImageFileNames.notActive)
     }
 }
 

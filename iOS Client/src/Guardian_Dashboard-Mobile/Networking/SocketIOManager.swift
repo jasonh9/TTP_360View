@@ -9,6 +9,7 @@
 import Foundation
 import SocketIO
 
+
 class SocketIOManager: NSObject {
     static let shared = SocketIOManager()
     
@@ -17,9 +18,10 @@ class SocketIOManager: NSObject {
     var connected = true
     var btUsers: [BTLE] = []
     var updateInterval: TimeInterval = 5
+    var registerPayload = Data()
     
-    func connect(withMessage message: String = "default message") {
-        addHandlers(message: message)
+    func connect(withMessage message: String = "default message", encodedMessage: Data? = nil) {
+        addHandlers(message: message, encodedMessage: encodedMessage ?? Data())
         socket.connect()
         Timer.scheduledTimer(withTimeInterval: updateInterval, repeats: true) { (timer) in
             self.sendJSON(with: message, connectionStatus: /*connected ? "connected" : "disconnected"*/"connected")
@@ -28,22 +30,30 @@ class SocketIOManager: NSObject {
     }
     
     //TODO: add all values to send here
-    func addHandlers(message: String) {
-        
-        socket.on(clientEvent: .connect) {(d, ack) in
+    func addHandlers(message: String, encodedMessage: Data) {
+        socket.on(clientEvent: .connect) { [weak self] (d, ack) in
             print("socket connected")
             print("emiting message: \(message)")
-            self.socket.emit("register", message)
+            self?.registerPayload = encodedMessage
+            self?.socket.emit("register", encodedMessage)
         }
         
-        socket.on(message) { (data, emitter) in
+        socket.on(message) { [weak self] (data, emitter) in
             print("received callback with data: \(data)")
-            if let dict = data.first as? NSDictionary, let response = dict["response"] as? String {
+            if let dict = data.first as? NSDictionary, let response = dict["response"] as? String, let strongSelf = self {
                 print("can be dict, all keys: \(dict.allKeys), values: \(dict.allValues), value for response key: \(response)")
+                print("response is: \(response)")
+                let integrity = dict["integrity"] as? String
+                let registered = String(bytes: strongSelf.registerPayload, encoding: .utf8)
+                if let integrity = integrity, let registered = registered {
+                    print("integrity is: \(integrity), equals registerPayload: \(integrity == registered)")
+                }
+                //TODO: make sure "response" key == "OK", "integrity" key == registerPayload??
             }
             
         }
     }
+    
     
     //TODO: send this intially, and when there is any sensor value change
     func sendJSON(with message: String, connectionStatus: String = "connected", newBTLEUsers: [BTLE] = []) {
@@ -71,7 +81,7 @@ class SocketIOManager: NSObject {
             let sendingData = try encoder.encode(deviceAndSensors)
             let dataAsString = String(data: sendingData, encoding: .utf8) ?? "value is nil"
             self.socket.emit("clientData", dataAsString)
-            print("sent data, sendingData: \(dataAsString)")
+//            print("sent data, sendingData: \(dataAsString)")
         } catch let e {
             print("error encoding: \(e.localizedDescription)")
         }

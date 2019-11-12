@@ -95,18 +95,17 @@ extension DashboardViewController: UICollectionViewDataSource, UICollectionViewD
         return items.count
     }
     
-    
-    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: StoryboardStrings.dashboardItemRestoreID, for: indexPath) as? DashboardItemCollectionViewCell else { return UICollectionViewCell() }
-        cell.itemName.text = items[indexPath.item].name
-        cell.itemImageView.image = items[indexPath.item].image
+        let item = items[indexPath.item]
+        cell.itemName.text = item.name
+        cell.itemImageView.image = item.image
+        cell.notActiveImageView?.image = item.notActiveImage
         
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        //BTLE
         if indexPath.item == 1 {
             presentBTUsersVC()
         } else if indexPath.item == 2 {

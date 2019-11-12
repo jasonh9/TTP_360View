@@ -72,6 +72,8 @@ struct ImageFileNames {
     static let wifiRed = "icons8-wi-fi-red"
     static let wifiGray = "icons8-wi-fi-gray"
     static let wifiBlack = "icons8-wi-fi-black"
+    
+    static let notActive = "no-stopping"
 }
 
 

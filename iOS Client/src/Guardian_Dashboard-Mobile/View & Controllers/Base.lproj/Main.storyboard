@@ -53,6 +53,9 @@
                                             <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vv9-NV-VhR" userLabel="Not Active Image View">
+                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="30"/>
+                                                </imageView>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dDl-2j-RMM">
                                                     <rect key="frame" x="0.0" y="0.0" width="50" height="29.5"/>
                                                 </imageView>
@@ -66,17 +69,22 @@
                                             <constraints>
                                                 <constraint firstItem="938-YW-63G" firstAttribute="top" secondItem="dDl-2j-RMM" secondAttribute="bottom" id="Bhg-jQ-oCe"/>
                                                 <constraint firstItem="dDl-2j-RMM" firstAttribute="top" secondItem="bLB-uA-Sjl" secondAttribute="top" id="H5f-UN-wkr"/>
+                                                <constraint firstItem="vv9-NV-VhR" firstAttribute="height" secondItem="dDl-2j-RMM" secondAttribute="height" multiplier="1.01695" id="NnM-Xe-cQI"/>
                                                 <constraint firstAttribute="bottom" secondItem="938-YW-63G" secondAttribute="bottom" id="Qj0-Gj-IsB"/>
                                                 <constraint firstAttribute="trailing" secondItem="938-YW-63G" secondAttribute="trailing" id="VQI-be-Djg"/>
+                                                <constraint firstItem="vv9-NV-VhR" firstAttribute="centerX" secondItem="bLB-uA-Sjl" secondAttribute="centerX" id="Ydb-TN-yS0"/>
                                                 <constraint firstItem="dDl-2j-RMM" firstAttribute="leading" secondItem="bLB-uA-Sjl" secondAttribute="leading" id="Ywd-qP-cAR"/>
                                                 <constraint firstAttribute="trailing" secondItem="dDl-2j-RMM" secondAttribute="trailing" id="aoO-fX-pIb"/>
+                                                <constraint firstItem="vv9-NV-VhR" firstAttribute="width" secondItem="dDl-2j-RMM" secondAttribute="width" id="gMj-NX-ANg"/>
                                                 <constraint firstItem="938-YW-63G" firstAttribute="leading" secondItem="bLB-uA-Sjl" secondAttribute="leading" id="mJa-Ds-nTE"/>
+                                                <constraint firstItem="vv9-NV-VhR" firstAttribute="top" secondItem="bLB-uA-Sjl" secondAttribute="top" id="owG-Rb-5dT"/>
                                             </constraints>
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="50" height="50"/>
                                         <connections>
                                             <outlet property="itemImageView" destination="dDl-2j-RMM" id="xFp-ey-Hrv"/>
                                             <outlet property="itemName" destination="938-YW-63G" id="NHQ-Dr-X39"/>
+                                            <outlet property="notActiveImageView" destination="vv9-NV-VhR" id="skc-31-qEU"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -130,14 +138,14 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="btUsersCell" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="btUsersCell" id="EZ6-WP-yqA" customClass="BTUserTableViewCell" customModule="Guardian_Dashboard_Mobile" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="21.5"/>
+                                        <rect key="frame" x="0.0" y="28" width="375" height="21"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="EZ6-WP-yqA" id="3Us-TQ-RH0">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="21.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="21"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mwH-7R-6JY">
-                                                    <rect key="frame" x="15" y="0.0" width="360" height="21.5"/>
+                                                    <rect key="frame" x="15" y="0.0" width="360" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -191,14 +199,14 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="btUsersCell" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="nfcTransmission" id="lQg-mn-gIp" userLabel="nfcTransmissionCell" customClass="NFCTransmissionsTableViewCell" customModule="Guardian_Dashboard_Mobile" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="21.5"/>
+                                        <rect key="frame" x="0.0" y="28" width="375" height="21"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lQg-mn-gIp" id="mBA-z9-RqZ">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="21.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="21"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kQF-Tu-bbY">
-                                                    <rect key="frame" x="15" y="0.0" width="360" height="21.5"/>
+                                                    <rect key="frame" x="15" y="0.0" width="360" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -252,20 +260,20 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="vpnConnections" id="ZEu-YY-9CS" userLabel="vpnConnectionsCell" customClass="VPNConnectionsTableViewCell" customModule="Guardian_Dashboard_Mobile" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="21.5"/>
+                                        <rect key="frame" x="0.0" y="28" width="375" height="21"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ZEu-YY-9CS" id="qWT-0n-Q0A">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="21.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="21"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MDX-sq-xz9">
-                                                    <rect key="frame" x="15" y="0.0" width="318" height="21.5"/>
+                                                    <rect key="frame" x="15" y="0.0" width="318" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="sSL-Mk-2gg">
-                                                    <rect key="frame" x="333" y="3" width="30" height="16"/>
+                                                    <rect key="frame" x="333" y="3" width="30" height="15.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="30" id="GWP-4G-cPC"/>
                                                     </constraints>
@@ -287,14 +295,14 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="btUsersCell" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="recentVpnConnections" id="OHS-kh-FxF" userLabel="vpnRecentConnectionsCell" customClass="VPNRecentConnectionsTableViewCell" customModule="Guardian_Dashboard_Mobile" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="49.5" width="375" height="21.5"/>
+                                        <rect key="frame" x="0.0" y="49" width="375" height="21"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="OHS-kh-FxF" id="dVu-78-BpD">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="21.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="21"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mj7-5n-RLN">
-                                                    <rect key="frame" x="15" y="0.0" width="42" height="21.5"/>
+                                                    <rect key="frame" x="15" y="0.0" width="42" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -348,20 +356,20 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="wifiConnections" id="kyl-Ne-6gM" userLabel="wifiConnectionsCell" customClass="WifiConnectionsTableViewCell" customModule="Guardian_Dashboard_Mobile" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="21"/>
+                                        <rect key="frame" x="0.0" y="28" width="375" height="21.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="kyl-Ne-6gM" id="QRW-iP-ylh">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="21"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="21.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D8R-wi-iQt">
-                                                    <rect key="frame" x="15" y="0.0" width="314" height="21"/>
+                                                    <rect key="frame" x="15" y="0.0" width="314" height="21.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="orc-9V-9Ff">
-                                                    <rect key="frame" x="333" y="3" width="30" height="15"/>
+                                                    <rect key="frame" x="333" y="3" width="30" height="15.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="30" id="VnL-C2-FAh"/>
                                                     </constraints>
@@ -383,14 +391,14 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="btUsersCell" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="wifiRecentConnections" id="NEg-61-NQf" userLabel="wifiConnectionsCell" customClass="WiFiRecentConnectionsTableViewCell" customModule="Guardian_Dashboard_Mobile" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="49" width="375" height="21.5"/>
+                                        <rect key="frame" x="0.0" y="49.5" width="375" height="21"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="NEg-61-NQf" id="Ri3-kQ-8kI">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="21.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="21"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2DM-ll-9OL">
-                                                    <rect key="frame" x="15" y="0.0" width="360" height="21.5"/>
+                                                    <rect key="frame" x="15" y="0.0" width="360" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
