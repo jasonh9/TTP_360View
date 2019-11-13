@@ -11,6 +11,10 @@ import CoreBluetooth
 import CoreLocation
 import CoreTelephony
 
+protocol MonitorsSensorStatusChangeDelegate {
+    func changeInStatus()
+}
+
 class SensorAggregator: NSObject {
     //Sensor frameworks
     let btService = BTService.btManager
@@ -21,6 +25,9 @@ class SensorAggregator: NSObject {
     var discoveredBTLEPeripherals: [String] = []
     var currentLocation: CLLocation? { return locationService.currentLocation }
     var providerName: String? { return cellService.carrier.carrierName }
+    
+    var delegate: MonitorsSensorStatusChangeDelegate?
+    
 }
 
 extension SensorAggregator: BTServiceUpdateDelegate {

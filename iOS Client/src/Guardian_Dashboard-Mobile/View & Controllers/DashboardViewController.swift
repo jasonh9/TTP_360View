@@ -10,8 +10,13 @@ import UIKit
 
 class DashboardViewController: UIViewController {
     @IBOutlet weak var dashboardItemsCollectionView: UICollectionView!
-    @IBOutlet weak var btUsersContainerView: UIView!
+    @IBOutlet weak var overallConnectionStatus: UILabel!
+    @IBOutlet weak var connectionStatusContainingView: UIView!
+    @IBOutlet weak var menuContainerView: UIView!
     
+    @IBOutlet weak var menuWidth: NSLayoutConstraint!
+    
+    let sensorAggregator = SensorAggregator()
     let socketManager = SocketIOManager.shared
     var items: [DashboardItem] = DashboardItem.defaultItems {
         didSet {
@@ -22,7 +27,9 @@ class DashboardViewController: UIViewController {
     }
     var collectionViewWidth: CGFloat { return dashboardItemsCollectionView.bounds.width }
     var collectionViewHeight: CGFloat { return dashboardItemsCollectionView.bounds.height }
-    var itemHeight: CGFloat { return collectionViewHeight / 5 }
+    var itemHeight: CGFloat { return collectionViewHeight / 3.5 }
+    var shownMenuWidth: CGFloat { return view.bounds.width / 1.5 }
+    var menuShouldDisplay = false
     
     @IBAction func hiddenChangeButtonTapped(_ sender: UIButton) {
         print("hiddenChangeButtonTapped")
@@ -30,19 +37,22 @@ class DashboardViewController: UIViewController {
         //        presentBTUsersVC()
     }
     
+    @IBAction func menuTapped(_ sender: UIButton) {
+        menuShouldDisplay.toggle()
+        menuWidth.constant = menuShouldDisplay ? shownMenuWidth : 0
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        sensorAggregator.delegate = self
+        overallConnectionStatus.attributedText = overallConnectionStatusText(forSignalStrength: .medium)
+        connectionStatusContainingView.layer.cornerRadius = 10
+        view.bringSubviewToFront(menuContainerView)
     }
     
     
-    
-    func changeInStatus() {
-        items[0] = DashboardItem(type: .lte(signalStrength: .noSignal))
-        socketManager.updateInterval = 300
-        dashboardItemsCollectionView.reloadData()
-    }
-    
+    //MARK: Modal View Presentations
     func presentBTUsersVC() {
         let btUsersVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: StoryboardStrings.btUsersVCID) as! BTUsersViewController
         btUsersVC.modalPresentationStyle = .popover
@@ -118,7 +128,7 @@ extension DashboardViewController: UICollectionViewDataSource, UICollectionViewD
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionViewWidth/4, height: itemHeight)
+        return CGSize(width: collectionViewWidth/3.2, height: itemHeight)
     }
     
 }
@@ -126,4 +136,16 @@ extension DashboardViewController: UICollectionViewDataSource, UICollectionViewD
 extension DashboardViewController: UIPopoverPresentationControllerDelegate {
     
 }
+
+extension DashboardViewController: MonitorsSensorStatusChangeDelegate {
+    func changeInStatus() {
+        items[0] = DashboardItem(type: .lte(signalStrength: .noSignal))
+        socketManager.updateInterval = 300
+        overallConnectionStatus.attributedText = overallConnectionStatusText(forSignalStrength: .missingCriticalSignal)
+        
+        dashboardItemsCollectionView.reloadData()
+    }
+}
+
+
 
