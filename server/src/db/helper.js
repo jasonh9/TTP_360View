@@ -20,7 +20,7 @@ function testDbName (name) {
 
 function testConnection (dbname) {
   if (!co.isEmpty(dbConnection)) {
-    if (dbConnection.s.databaseName === dbname) {
+    if (dbConnection.s.options.dbName === dbname) {
       return true
     } else {
       dbConnection.close()
@@ -74,6 +74,10 @@ function getNextId (db, collectionName, fieldName) {
   return myPromise
 }
 
+function getConnectionStatus(){
+
+}
+
 module.exports = {
   /* eslint-disable promise/catch-or-return, no-unused-vars */
   createDatabase: function (dbname) {
@@ -112,9 +116,9 @@ module.exports = {
     dbname = testDbName(dbname)
 
     if (testConnection(dbname)) { return Promise.resolve(dbConnection) } else {
-      return MongoClient.connect('mongodb://' + config.HOST + ':' + config.PORT + '/' + dbname)
+      return MongoClient.connect('mongodb://' + config.HOST + ':' + config.PORT + '/' + dbname, { useUnifiedTopology: true, useNewUrlParser: true })
         .then((db) => {
-          if (db.s.databaseName !== dbname) { throw new 'Wrong Database!'() }
+          if (db.s.options.dbName !== dbname) { throw new 'Wrong Database!'() } else { console.log('DB connected!') }
 
           // log connection status and reset connection once reconnect fails
           db.on('close', (err) => {
@@ -123,7 +127,7 @@ module.exports = {
             }
           })
           db.on('reconnect', (payload) => {
-            console.warn(payload ? `reconnected to ${payload.s.host}:${payload.s.port}`: 'reconnected to mongodb')
+            console.warn(payload ? `reconnected to ${payload.s.host}:${payload.s.port}` : 'reconnected to mongodb')
           })
           // HACK This is an undocumented event name, but it's there and it works
           // best solution so far, and even if it's removed in the future, it will not break anything else
@@ -135,7 +139,7 @@ module.exports = {
           })
 
           dbConnection = db
-          return db
+          return db.db(dbname)
         }).catch((err) => {
           // if we can't get a connection we should just exit!
           console.error(err.message)
@@ -145,6 +149,10 @@ module.exports = {
   },
 
   getCollection: function (name) {
+    return module.exports.connectToDatabase().then((db) => db.collection(name))
+  },
+
+  getCollectionObj: function (dbconn, name) {
     return module.exports.connectToDatabase().then((db) => db.collection(name))
   },
 

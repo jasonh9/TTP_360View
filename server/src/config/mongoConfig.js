@@ -13,10 +13,10 @@ try {
   console.log('Exception: Windows or no read rights to read /etc/hosts (bad)')
 }
 // read mongo URL from ENV
-host = (!co.isEmpty(process.env.DATABASE_URL)) ? process.env.DATABASE_URL : host
-if (host !== 'localhost') {
-  console.log('Using ' + host + ' as database host.')
-}
+// host = (!co.isEmpty(process.env.DATABASE_URL)) ? process.env.DATABASE_URL : host
+// if (host !== 'localhost') {
+//   console.log('Using ' + host + ' as database host.')
+// }
 
 let port = 27017
 // read mongo port from ENV
@@ -26,9 +26,9 @@ if (!co.isEmpty(process.env.DATABASE_PORT)) {
 }
 
 let guardianeunoDbName = 'guardianeuno'
-if (process.env.NODE_ENV === 'test') {
-  guardianeunoDbName = 'guardianeuno_test'
-}
+// if (process.env.NODE_ENV === 'test') {
+//   guardianeunoDbName = 'guardianeuno_test'
+// }
 
 module.exports = {
   MongoDB: {

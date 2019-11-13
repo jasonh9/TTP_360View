@@ -5,19 +5,23 @@ const deviceModel = require('../models/device')
 
 // provide some CRUD functions, just get and insert at the moment
 module.exports = {
-  get: function (identifer) {
-    return helper.connectToDatabase()
-      .then((db) => db.collection('devices'))
-      .then((col) => col.findOne({
-        _id: identifer
-      }))
+  get: function (dbconn, identifer) {
+    return helper.getCollectionObj(dbconn, 'device').then((col) => {
+      return col.find({ uuid: identifer.toString() })
+    })
+    // return helper.connectToDatabase().then((db) => db.collection('device').find({ uuid: identifer.toString() }))
+    // return helper.connectToDatabase()
+    //   .then((db) => db.collection('device'))
+    //   .then((col) => col.find({
+    //     _id: identifer
+    //   }))
   },
   insert: function (device) {
     return helper.connectToDatabase()
-      .then((db) => helper.getNextIncrementationValueForCollection(db, 'devices'))
+      .then((db) => helper.getNextIncrementationValueForCollection(db, 'device'))
       .then((newId) => {
         return helper.connectToDatabase()
-          .then((db2) => db2.collection('devices'))
+          .then((db2) => db2.collection('device'))
           .then((col) => {
             let valid = false
             device._id = newId

@@ -19,6 +19,8 @@ const device = {
     uuid: {
       type: 'string'
     }
+    // gps location data
+    // ble
   }
 }
 
