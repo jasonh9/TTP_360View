@@ -13,8 +13,8 @@ protocol ActivationState {
 }
 
 //For WiFi and LTE
-enum SignalStrength: ActivationState {
-    case noSignal
+enum SignalStrength: Int, ActivationState {
+    case noSignal = 0
     case weak
     case medium
     case strong
@@ -22,24 +22,24 @@ enum SignalStrength: ActivationState {
     var isActive: Bool { return self != .noSignal }
 }
 
-enum BTLEConnectionStrength: ActivationState {
-    case turnedOff
+enum BTLEConnectionStrength: Int, ActivationState {
+    case turnedOff = 0
     case weak
     case proximate
     
     var isActive: Bool { return self != .turnedOff }
 }
 
-enum BTClassicPairedStatus {
+enum BTClassicPairedStatus: Int {
+    case notPaired = 0
     case paired
-    case notPaired
     
     var isActive: Bool { return self != .notPaired }
 }
 
 //For NFC, hardware encryption, VPN usage, location tracking, antivirus, MDM usage
-enum TurnedOnStatus: ActivationState {
-    case off
+enum TurnedOnStatus: Int, ActivationState {
+    case off = 0
     case on
     
     var isActive: Bool { return self != .off }
@@ -56,6 +56,22 @@ enum DashboardItemType {
     case gps(status: TurnedOnStatus)
     case antivirusStatus(status: TurnedOnStatus)
     case mdmStatus(status: TurnedOnStatus)
+    
+    //TODO: use this for DashboardItem.image
+    var strength: Float {
+        switch self {
+        case .lte(let signalStrength): return Float(signalStrength.rawValue) / Float(4.0)
+        case .btle(let connectionStrength): return Float(connectionStrength.rawValue) / Float(3.0)
+        case .btClassic(let pairedStatus): return Float(pairedStatus.rawValue)
+        case .nfc(let status): return Float(status.rawValue)
+        case .encryptionStatus(let status): return Float(status.rawValue)
+        case .vpn(let status): return Float(status.rawValue)
+        case .wifi(let signalStrength): return Float(signalStrength.rawValue) / Float(4.0)
+        case .gps(let status): return Float(status.rawValue)
+        case .antivirusStatus(let status): return Float(status.rawValue)
+        case .mdmStatus(let status): return Float(status.rawValue)
+        }
+    }
 }
 
 

@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 class DashboardViewController: UIViewController {
     @IBOutlet weak var dashboardItemsCollectionView: UICollectionView!
     @IBOutlet weak var overallConnectionStatus: UILabel!
@@ -28,7 +29,7 @@ class DashboardViewController: UIViewController {
     var collectionViewWidth: CGFloat { return dashboardItemsCollectionView.bounds.width }
     var collectionViewHeight: CGFloat { return dashboardItemsCollectionView.bounds.height }
     var itemHeight: CGFloat { return collectionViewHeight / 3.5 }
-    var shownMenuWidth: CGFloat { return view.bounds.width / 1.5 }
+    var shownMenuWidth: CGFloat { return view.bounds.width / 1.33 }
     var menuShouldDisplay = false
     
     @IBAction func hiddenChangeButtonTapped(_ sender: UIButton) {
@@ -49,33 +50,41 @@ class DashboardViewController: UIViewController {
         overallConnectionStatus.attributedText = overallConnectionStatusText(forSignalStrength: .medium)
         connectionStatusContainingView.layer.cornerRadius = 10
         view.bringSubviewToFront(menuContainerView)
+        
+    }
+    
+    func addChildVC() {
+        let menuVC = UIStoryboard(name: StoryboardStrings.mainStoryboardName, bundle: nil).instantiateViewController(identifier: StoryboardStrings.menuStoryboardID) as! MenuViewController
+        menuVC.delegate = self
+        self.addChild(menuVC)
+        //Set delegate, as well as instantiate
     }
     
     
     //MARK: Modal View Presentations
     func presentBTUsersVC() {
         let btUsersVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: StoryboardStrings.btUsersVCID) as! BTUsersViewController
-        btUsersVC.modalPresentationStyle = .popover
+        btUsersVC.modalPresentationStyle = .overCurrentContext
         btUsersVC.newBTLEUsers = ["John's iphone", "ABCDE"]
-        present(btUsersVC, animated: true, completion: nil)
+        present(btUsersVC, animated: false, completion: nil)
     }
     
     func presentNFCTransmissionsVC() {
         let nfcTransmissionsVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: StoryboardStrings.nfcTransmissionsVCID) as! NFCTransmissionsViewController
-        nfcTransmissionsVC.modalPresentationStyle = .popover
-        present(nfcTransmissionsVC, animated: true, completion: nil)
+        nfcTransmissionsVC.modalPresentationStyle = .overCurrentContext
+        present(nfcTransmissionsVC, animated: false, completion: nil)
     }
     
     func presentVPNConnectionsVC() {
         let vpnConnectionsVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: StoryboardStrings.vpnConnectionsVCID) as! VPNConnectionsViewController
-        vpnConnectionsVC.modalPresentationStyle = .popover
-        present(vpnConnectionsVC, animated: true, completion: nil)
+        vpnConnectionsVC.modalPresentationStyle = .overCurrentContext
+        present(vpnConnectionsVC, animated: false, completion: nil)
     }
     
     func presentWifiConnectionsVC() {
         let wifiConnectionsVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: StoryboardStrings.wifiConnectionsVCID) as! WiFiConnectionsViewController
-        wifiConnectionsVC.modalPresentationStyle = .popover
-        present(wifiConnectionsVC, animated: true, completion: nil)
+        wifiConnectionsVC.modalPresentationStyle = .overCurrentContext
+        present(wifiConnectionsVC, animated: false, completion: nil)
         
     }
     
@@ -117,13 +126,13 @@ extension DashboardViewController: UICollectionViewDataSource, UICollectionViewD
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if indexPath.item == 1 {
-            presentBTUsersVC()
-        } else if indexPath.item == 2 {
-            presentNFCTransmissionsVC()
-        } else if indexPath.item == 4 {
-            presentVPNConnectionsVC()
-        } else if indexPath.item == 5 {
             presentWifiConnectionsVC()
+        } else if indexPath.item == 2 {
+            presentBTUsersVC()
+        } else if indexPath.item == 3 {
+            presentNFCTransmissionsVC()
+        } else if indexPath.item == 5 {
+            presentVPNConnectionsVC()
         }
     }
     
@@ -144,6 +153,14 @@ extension DashboardViewController: MonitorsSensorStatusChangeDelegate {
         overallConnectionStatus.attributedText = overallConnectionStatusText(forSignalStrength: .missingCriticalSignal)
         
         dashboardItemsCollectionView.reloadData()
+    }
+}
+
+extension DashboardViewController: AggregateConnectionPriorityDelegate {
+    func updateConnectionStatus(withPriorityItems priorityItems: [(item: DashboardItem, value: Float)]) {
+            let priorityItems = priorityItems.map({($0.item, convert(prioritySliderValue: $0.value))})
+            let overallSignalStrength = calculateOverallSignalStrength(from: priorityItems)
+            overallConnectionStatus.attributedText = overallConnectionStatusText(forSignalStrength: overallSignalStrength)
     }
 }
 

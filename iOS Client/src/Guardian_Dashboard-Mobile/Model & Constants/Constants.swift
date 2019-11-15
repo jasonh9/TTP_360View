@@ -9,7 +9,9 @@
 import Foundation
 
 struct StoryboardStrings {
+    static let mainStoryboardName = "Main"
     static let dashboardVCStoryboardID = "dashboardVC"
+    static let menuStoryboardID = "menuVC"
     static let dashboardItemRestoreID = "dashboardItemCell"
     static let btUsersCellID = "btUsersCell"
     static let nfcTransmissionCellID = "nfcTransmission"

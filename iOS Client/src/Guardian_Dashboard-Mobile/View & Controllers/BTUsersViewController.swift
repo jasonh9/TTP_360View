@@ -15,14 +15,29 @@ class BTUsersViewController: UIViewController {
     var newBTLEUsers: [String] = []
     let dummyRecentBTLEUsers: [String] = ["Shelley's Pixel 3", "Wal-Mart Beacon 4"]
     
+    
+    @IBAction func viewTapped(_ sender: UITapGestureRecognizer) {
+        dismiss(animated: false, completion: nil)
+    }
+    
+    @IBAction func viewSwiped(_ sender: UISwipeGestureRecognizer) {
+        dismiss(animated: false, completion: nil)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         btUsersTableView.tableFooterView = UIView()
     }
-    
 
+}
 
+extension BTUsersViewController: UIGestureRecognizerDelegate {
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        let location = touch.location(in: btUsersTableView)
+        let touchIsInTableView = location.x >= 0.0 && location.y >= 0.0 && location.x <= btUsersTableView.frame.width && location.y <= btUsersTableView.frame.height
+        return !touchIsInTableView
+    }
 }
 
 extension BTUsersViewController: UITableViewDataSource, UITableViewDelegate {

@@ -10,6 +10,7 @@
 		721401CD236EF54000DB7A28 /* BTUsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721401CC236EF54000DB7A28 /* BTUsersViewController.swift */; };
 		721401CF236EF89F00DB7A28 /* BTUserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721401CE236EF89F00DB7A28 /* BTUserTableViewCell.swift */; };
 		721A3F50236D1B63002BF83F /* DashboardItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721A3F4F236D1B63002BF83F /* DashboardItemCollectionViewCell.swift */; };
+		72322634237E60EF00318505 /* NFCReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72322633237E60EF00318505 /* NFCReader.swift */; };
 		7256CE77237BD39C008219AF /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7256CE76237BD39C008219AF /* MenuViewController.swift */; };
 		7256CE79237BD586008219AF /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7256CE78237BD586008219AF /* MenuTableViewCell.swift */; };
 		7276DFE4236D29B6001C6FBF /* DashboardItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7276DFE3236D29B6001C6FBF /* DashboardItem.swift */; };
@@ -44,6 +45,7 @@
 		721401CC236EF54000DB7A28 /* BTUsersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTUsersViewController.swift; sourceTree = "<group>"; };
 		721401CE236EF89F00DB7A28 /* BTUserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTUserTableViewCell.swift; sourceTree = "<group>"; };
 		721A3F4F236D1B63002BF83F /* DashboardItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardItemCollectionViewCell.swift; sourceTree = "<group>"; };
+		72322633237E60EF00318505 /* NFCReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFCReader.swift; sourceTree = "<group>"; };
 		7256CE76237BD39C008219AF /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		7256CE78237BD586008219AF /* MenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
 		7276DFE3236D29B6001C6FBF /* DashboardItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardItem.swift; sourceTree = "<group>"; };
@@ -143,6 +145,7 @@
 		7276DFF7236E7A19001C6FBF /* Sensor Data */ = {
 			isa = PBXGroup;
 			children = (
+				72322633237E60EF00318505 /* NFCReader.swift */,
 				7276DFF3236E64F9001C6FBF /* SensorAggregator.swift */,
 				7276DFF5236E75D6001C6FBF /* BluetoothService.swift */,
 				7276DFF8236E7AC2001C6FBF /* LocationService.swift */,
@@ -298,6 +301,7 @@
 				72B10B24236F264F00CF4DBA /* WiFiConnectionsViewController.swift in Sources */,
 				7276DFF6236E75D6001C6FBF /* BluetoothService.swift in Sources */,
 				7256CE79237BD586008219AF /* MenuTableViewCell.swift in Sources */,
+				72322634237E60EF00318505 /* NFCReader.swift in Sources */,
 				721401CF236EF89F00DB7A28 /* BTUserTableViewCell.swift in Sources */,
 				7276DFE9236E2C52001C6FBF /* SocketIOManager.swift in Sources */,
 				72B10B22236F262B00CF4DBA /* VPNConnectionsViewController.swift in Sources */,
