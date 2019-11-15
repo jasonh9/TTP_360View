@@ -3,13 +3,36 @@
     padding: 0;
     display: flex;
     flex-direction: column;
-    width: 70%;
+    width: 100%;
     margin: 0 auto;
+    color: #fff;
 }
 
 .activeUsers ul li {
     padding: 25px 0 25px 0;
-    background-color: grey;
     margin: 10px 0;
-    border-radius: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.activeUsers ul li p {
+    padding-left: 10px;
+}
+
+.active {
+    background-color: #4a4a4a;
+}
+
+.avatar {
+    object-fit: cover;
+    vertical-align: middle;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.status {
+    width: 30px;
+    margin-right: 10px;
 }
