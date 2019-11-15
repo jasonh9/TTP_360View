@@ -10,6 +10,7 @@ import Foundation
 import CoreBluetooth
 import CoreLocation
 import CoreTelephony
+import CoreNFC
 
 protocol MonitorsSensorStatusChangeDelegate {
     func changeInStatus()
@@ -20,6 +21,7 @@ class SensorAggregator: NSObject {
     let btService = BTService.btManager
     let locationService = LocationService.sharedInstance
     let cellService = CellularServiceInfo()
+    let nfcReader = NFCReader()
     
     //Sensor data
     var discoveredBTLEPeripherals: [String] = []

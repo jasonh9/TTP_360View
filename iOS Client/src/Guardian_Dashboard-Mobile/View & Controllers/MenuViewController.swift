@@ -40,6 +40,10 @@ extension MenuViewController: UITableViewDataSource, UITableViewDelegate {
         return items.count
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return tableView.bounds.height / 10
+    }
+    
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return "Signal Priority"
     }

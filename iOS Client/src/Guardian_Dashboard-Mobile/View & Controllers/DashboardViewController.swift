@@ -14,9 +14,7 @@ class DashboardViewController: UIViewController {
     @IBOutlet weak var overallConnectionStatus: UILabel!
     @IBOutlet weak var connectionStatusContainingView: UIView!
     @IBOutlet weak var menuContainerView: UIView!
-    
-    @IBOutlet weak var menuWidth: NSLayoutConstraint!
-    
+        
     let sensorAggregator = SensorAggregator()
     let socketManager = SocketIOManager.shared
     var items: [DashboardItem] = DashboardItem.defaultItems {
@@ -29,18 +27,25 @@ class DashboardViewController: UIViewController {
     var collectionViewWidth: CGFloat { return dashboardItemsCollectionView.bounds.width }
     var collectionViewHeight: CGFloat { return dashboardItemsCollectionView.bounds.height }
     var itemHeight: CGFloat { return collectionViewHeight / 3.5 }
-    var shownMenuWidth: CGFloat { return view.bounds.width / 1.33 }
+//    var shownMenuWidth: CGFloat { return view.bounds.width / 1.33 }
     var menuShouldDisplay = false
     
     @IBAction func hiddenChangeButtonTapped(_ sender: UIButton) {
         print("hiddenChangeButtonTapped")
         changeInStatus()
-        //        presentBTUsersVC()
     }
     
     @IBAction func menuTapped(_ sender: UIButton) {
         menuShouldDisplay.toggle()
-        menuWidth.constant = menuShouldDisplay ? shownMenuWidth : 0
+        menuContainerView.isHidden = !menuShouldDisplay
+//        menuWidth.constant = menuShouldDisplay ? shownMenuWidth : 0
+    }
+    
+    
+    @IBAction func dismissMenuTap(_ sender: UITapGestureRecognizer) {
+        menuShouldDisplay = false
+        menuContainerView.isHidden = true
+//        menuWidth.constant = 0
     }
     
     override func viewDidLoad() {
@@ -104,9 +109,16 @@ class DashboardViewController: UIViewController {
         return .none
     }
     
-    
-    
-    
+}
+
+extension DashboardViewController: UIGestureRecognizerDelegate {
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        let location = touch.location(in: menuContainerView)
+        let locationIsWithinMenu = location.x >= 0.0 && location.y >= 0.0 && location.x <= menuContainerView.frame.width && location.y <= menuContainerView.frame.height
+        
+        if menuShouldDisplay && !locationIsWithinMenu { return true }
+        else { return false }
+    }
 }
 
 extension DashboardViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {

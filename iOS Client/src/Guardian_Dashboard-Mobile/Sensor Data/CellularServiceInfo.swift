@@ -14,6 +14,9 @@ class CellularServiceInfo: NSObject {
     let networkInfo = CTTelephonyNetworkInfo()
     let cellDataAccessInfo = CTCellularData()
     
+    func x() {
+        networkInfo.serviceCurrentRadioAccessTechnology
+    }
 }
 
 extension CellularServiceInfo: CTTelephonyNetworkInfoDelegate {
