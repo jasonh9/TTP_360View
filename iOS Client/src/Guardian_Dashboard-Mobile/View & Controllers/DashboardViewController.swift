@@ -14,7 +14,8 @@ class DashboardViewController: UIViewController, AggregateConnectionPriorityDele
     @IBOutlet weak var overallConnectionStatus: UILabel!
     @IBOutlet weak var connectionStatusContainingView: UIView!
     @IBOutlet weak var menuContainerView: UIView!
-        
+    @IBOutlet weak var menuButton: UIButton!
+    
     let sensorAggregator = SensorAggregator()
     let socketManager = SocketIOManager.shared
     var items: [DashboardItem] = DashboardItem.defaultItems {
@@ -27,7 +28,7 @@ class DashboardViewController: UIViewController, AggregateConnectionPriorityDele
     var collectionViewWidth: CGFloat { return dashboardItemsCollectionView.bounds.width }
     var collectionViewHeight: CGFloat { return dashboardItemsCollectionView.bounds.height }
     var itemHeight: CGFloat { return collectionViewHeight / 3.5 }
-//    var shownMenuWidth: CGFloat { return view.bounds.width / 1.33 }
+//    var deviceIsUsingDarkMode: Bool = UITraitCollection.userIn
     var menuShouldDisplay = false
     
     @IBAction func hiddenChangeButtonTapped(_ sender: UIButton) {
@@ -38,14 +39,12 @@ class DashboardViewController: UIViewController, AggregateConnectionPriorityDele
     @IBAction func menuTapped(_ sender: UIButton) {
         menuShouldDisplay.toggle()
         menuContainerView.isHidden = !menuShouldDisplay
-//        menuWidth.constant = menuShouldDisplay ? shownMenuWidth : 0
     }
     
     
     @IBAction func dismissMenuTap(_ sender: UITapGestureRecognizer) {
         menuShouldDisplay = false
         menuContainerView.isHidden = true
-//        menuWidth.constant = 0
     }
     
     override func viewDidLoad() {
@@ -54,6 +53,7 @@ class DashboardViewController: UIViewController, AggregateConnectionPriorityDele
         sensorAggregator.delegate = self
         overallConnectionStatus.attributedText = overallConnectionStatusText(forSignalStrength: .medium)
         connectionStatusContainingView.layer.cornerRadius = 10
+//        menuButton.setImage(<#T##image: UIImage?##UIImage?#>, for: <#T##UIControl.State#>)
         view.bringSubviewToFront(menuContainerView)
         addChildVC()
     }

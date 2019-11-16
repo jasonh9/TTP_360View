@@ -183,6 +183,7 @@
                     <connections>
                         <outlet property="connectionStatusContainingView" destination="Dyo-5U-xa6" id="bC2-13-f1c"/>
                         <outlet property="dashboardItemsCollectionView" destination="eyo-aH-0Qq" id="kEY-G8-zEr"/>
+                        <outlet property="menuButton" destination="hHb-Zm-cZ6" id="SeA-19-Eii"/>
                         <outlet property="menuContainerView" destination="4gQ-zJ-LRE" id="dIH-II-EIW"/>
                         <outlet property="overallConnectionStatus" destination="D0b-8p-D7i" id="5RU-pr-gy1"/>
                     </connections>
