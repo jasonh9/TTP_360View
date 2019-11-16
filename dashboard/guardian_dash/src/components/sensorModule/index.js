@@ -19,24 +19,24 @@ class SensorModule extends React.Component {
         }
     }
     componentDidMount() {
-        store.subscribe(() => {
-            this.setState({
-                payload : store.getState().sensor_state.payload,
-            })
+        // store.subscribe(() => {
+        //     this.setState({
+        //         payload : store.getState().sensor_state.payload,
+        //     })
             
-            this.state.payload !== null ? this.setState({
-                UUID : store.getState().sensor_state.uuid,
-                payload : store.getState().sensor_state.payload,
-                LTE_connectionStatus : store.getState().sensor_state.payload.LTE_connectionStatus,
-                NFC_status : store.getState().sensor_state.payload.NFC_status,
-                HRD_ENC_encryptionStatus : store.getState().sensor_state.payload.HRD_ENC_encryptionStatus,
-                MDM_profile : store.getState().sensor_state.payload.MDM_profile,
-                AV_status : store.getState().sensor_state.payload.AV_status,
-                LTE_provider : store.getState().sensor_state.payload.LTE_provider,
-                GPS_gpsStatus : store.getState().sensor_state.payload.GPS_gpsStatus
-            }) : console.error('The websocket did not get the payload');
-            console.log(store.getState())
-        })
+        //     this.state.payload !== null ? this.setState({
+        //         UUID : store.getState().sensor_state.uuid,
+        //         payload : store.getState().sensor_state.payload,
+        //         LTE_connectionStatus : store.getState().sensor_state.payload.LTE_connectionStatus,
+        //         NFC_status : store.getState().sensor_state.payload.NFC_status,
+        //         HRD_ENC_encryptionStatus : store.getState().sensor_state.payload.HRD_ENC_encryptionStatus,
+        //         MDM_profile : store.getState().sensor_state.payload.MDM_profile,
+        //         AV_status : store.getState().sensor_state.payload.AV_status,
+        //         LTE_provider : store.getState().sensor_state.payload.LTE_provider,
+        //         GPS_gpsStatus : store.getState().sensor_state.payload.GPS_gpsStatus
+        //     }) : console.error('The websocket did not get the payload');
+        //     console.log(store.getState())
+        // })
     }
     render(){
         const nameDecide = (uuid = this.state.UUID) => {
