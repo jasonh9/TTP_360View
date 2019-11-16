@@ -16,6 +16,16 @@ class VPNConnectionsViewController: UIViewController {
     var currentConnections: [String] = ["Hotspot Shield", "123456"]
     let recentConnections: [String] = ["SuperbVPN"]
     
+    
+    @IBAction func viewTapped(_ sender: UITapGestureRecognizer) {
+        dismiss(animated: false, completion: nil)
+    }
+    
+    
+    @IBAction func viewSwiped(_ sender: UISwipeGestureRecognizer) {
+        dismiss(animated: false, completion: nil)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -24,6 +34,14 @@ class VPNConnectionsViewController: UIViewController {
     
     
     
+}
+
+extension VPNConnectionsViewController: UIGestureRecognizerDelegate {
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        let location = touch.location(in: vpnTableView)
+        let touchIsInTableView = location.x >= 0.0 && location.y >= 0.0 && location.x <= vpnTableView.frame.width && location.y <= vpnTableView.frame.height
+        return !touchIsInTableView
+    }
 }
 
 extension VPNConnectionsViewController: UITableViewDataSource, UITableViewDelegate {

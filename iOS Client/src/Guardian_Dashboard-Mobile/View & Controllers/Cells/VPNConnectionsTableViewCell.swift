@@ -1,5 +1,5 @@
 //
-//  WiFiRecentConnectionsTableViewCell.swift
+//  VPNConnectionsTableViewCell.swift
 //  Guardian_Dashboard-Mobile
 //
 //  Created by Andrew Struck-Marcell on 11/3/19.
@@ -8,13 +8,10 @@
 
 import UIKit
 
-class WiFiRecentConnectionsTableViewCell: UITableViewCell {
+class VPNConnectionsTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var securityImage: UIImageView!
     @IBOutlet weak var connectionName: UILabel!
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

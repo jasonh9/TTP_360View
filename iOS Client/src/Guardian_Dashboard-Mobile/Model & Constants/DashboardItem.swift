@@ -8,6 +8,43 @@
 
 import UIKit
 
+protocol ActivationState {
+    var isActive: Bool { get }
+}
+
+//For WiFi and LTE
+enum SignalStrength: Int, ActivationState {
+    case noSignal = 0
+    case weak
+    case medium
+    case strong
+    
+    var isActive: Bool { return self != .noSignal }
+}
+
+enum BTLEConnectionStrength: Int, ActivationState {
+    case turnedOff = 0
+    case weak
+    case proximate
+    
+    var isActive: Bool { return self != .turnedOff }
+}
+
+enum BTClassicPairedStatus: Int {
+    case notPaired = 0
+    case paired
+    
+    var isActive: Bool { return self != .notPaired }
+}
+
+//For NFC, hardware encryption, VPN usage, location tracking, antivirus, MDM usage
+enum TurnedOnStatus: Int, ActivationState {
+    case off = 0
+    case on
+    
+    var isActive: Bool { return self != .off }
+}
+
 enum DashboardItemType {
     case lte(signalStrength: SignalStrength)
     case btle(connectionStrength: BTLEConnectionStrength)
@@ -19,35 +56,27 @@ enum DashboardItemType {
     case gps(status: TurnedOnStatus)
     case antivirusStatus(status: TurnedOnStatus)
     case mdmStatus(status: TurnedOnStatus)
+    
+    //TODO: use this for DashboardItem.image
+    var strength: Float {
+        switch self {
+        case .lte(let signalStrength): return Float(signalStrength.rawValue) / Float(4.0)
+        case .btle(let connectionStrength): return Float(connectionStrength.rawValue) / Float(3.0)
+        case .btClassic(let pairedStatus): return Float(pairedStatus.rawValue)
+        case .nfc(let status): return Float(status.rawValue)
+        case .encryptionStatus(let status): return Float(status.rawValue)
+        case .vpn(let status): return Float(status.rawValue)
+        case .wifi(let signalStrength): return Float(signalStrength.rawValue) / Float(4.0)
+        case .gps(let status): return Float(status.rawValue)
+        case .antivirusStatus(let status): return Float(status.rawValue)
+        case .mdmStatus(let status): return Float(status.rawValue)
+        }
+    }
 }
 
-//For WiFi and LTE
-enum SignalStrength {
-    case noSignal
-    case weak
-    case medium
-    case strong
-}
-
-enum BTLEConnectionStrength {
-    case turnedOff
-    case weak
-    case proximate
-}
-
-enum BTClassicPairedStatus {
-    case paired
-    case notPaired
-}
-
-//For NFC, hardware encryption, VPN usage, location tracking, antivirus, MDM usage
-enum TurnedOnStatus {
-    case off
-    case on
-}
 
 struct DashboardItem {
-    static let defaultItems: [DashboardItem] = [DashboardItem(type: .lte(signalStrength: .strong)), DashboardItem(type: .btle(connectionStrength: .proximate)), /*DashboardItem(type: .btClassic(pairedStatus: .notPaired)),*/ DashboardItem(type: .nfc(status: .on)), DashboardItem(type: .encryptionStatus(status: .off)), DashboardItem(type: .vpn(status: .off)), DashboardItem(type: .wifi(signalStrength: .medium)), DashboardItem(type: .gps(status: .on)), DashboardItem(type: .antivirusStatus(status: .off)), DashboardItem(type: .mdmStatus(status: .off))]
+    static let defaultItems: [DashboardItem] = [DashboardItem(type: .lte(signalStrength: .strong)), DashboardItem(type: .wifi(signalStrength: .medium)), DashboardItem(type: .btle(connectionStrength: .proximate)), /*DashboardItem(type: .btClassic(pairedStatus: .notPaired)),*/ DashboardItem(type: .nfc(status: .on)), DashboardItem(type: .encryptionStatus(status: .off)), DashboardItem(type: .vpn(status: .off)), DashboardItem(type: .gps(status: .on)), DashboardItem(type: .antivirusStatus(status: .off)), DashboardItem(type: .mdmStatus(status: .off))]
     
     let type: DashboardItemType
     var image: UIImage? {
@@ -119,6 +148,23 @@ struct DashboardItem {
         case .antivirusStatus: return "AntiVirus"
         case .mdmStatus: return "MDM"
         }
+    }
+    
+    var notActiveImage: UIImage? {
+        let isActive: Bool
+        switch type {
+        case .lte(let signalStrength): isActive = signalStrength.isActive
+        case .btle(let connectionStrength): isActive = connectionStrength.isActive
+        case .btClassic(let pairedStatus): isActive = pairedStatus.isActive
+        case .nfc(let status): isActive = status.isActive
+        case .encryptionStatus(let status): isActive = status.isActive
+        case .vpn(let status): isActive = status.isActive
+        case .wifi(let signalStrength): isActive = signalStrength.isActive
+        case .gps(let status): isActive = status.isActive
+        case .antivirusStatus(let status): isActive = status.isActive
+        case .mdmStatus(let status): isActive = status.isActive
+        }
+        return isActive ? nil : UIImage(named: ImageFileNames.notActive)
     }
 }
 

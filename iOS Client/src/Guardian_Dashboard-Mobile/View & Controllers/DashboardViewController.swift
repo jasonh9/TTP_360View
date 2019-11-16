@@ -8,10 +8,15 @@
 
 import UIKit
 
-class DashboardViewController: UIViewController {
+
+class DashboardViewController: UIViewController, AggregateConnectionPriorityDelegate {
     @IBOutlet weak var dashboardItemsCollectionView: UICollectionView!
-    @IBOutlet weak var btUsersContainerView: UIView!
+    @IBOutlet weak var overallConnectionStatus: UILabel!
+    @IBOutlet weak var connectionStatusContainingView: UIView!
+    @IBOutlet weak var menuContainerView: UIView!
+    @IBOutlet weak var menuButton: UIButton!
     
+    let sensorAggregator = SensorAggregator()
     let socketManager = SocketIOManager.shared
     var items: [DashboardItem] = DashboardItem.defaultItems {
         didSet {
@@ -22,50 +27,73 @@ class DashboardViewController: UIViewController {
     }
     var collectionViewWidth: CGFloat { return dashboardItemsCollectionView.bounds.width }
     var collectionViewHeight: CGFloat { return dashboardItemsCollectionView.bounds.height }
-    var itemHeight: CGFloat { return collectionViewHeight / 5 }
+    var itemHeight: CGFloat { return collectionViewHeight / 3.5 }
+//    var deviceIsUsingDarkMode: Bool = UITraitCollection.userIn
+    var menuShouldDisplay = false
     
     @IBAction func hiddenChangeButtonTapped(_ sender: UIButton) {
         print("hiddenChangeButtonTapped")
         changeInStatus()
-        //        presentBTUsersVC()
+    }
+    
+    @IBAction func menuTapped(_ sender: UIButton) {
+        menuShouldDisplay.toggle()
+        menuContainerView.isHidden = !menuShouldDisplay
+    }
+    
+    
+    @IBAction func dismissMenuTap(_ sender: UITapGestureRecognizer) {
+        menuShouldDisplay = false
+        menuContainerView.isHidden = true
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        sensorAggregator.delegate = self
+        overallConnectionStatus.attributedText = overallConnectionStatusText(forSignalStrength: .medium)
+        connectionStatusContainingView.layer.cornerRadius = 10
+//        menuButton.setImage(<#T##image: UIImage?##UIImage?#>, for: <#T##UIControl.State#>)
+        view.bringSubviewToFront(menuContainerView)
+        addChildVC()
+    }
+    
+    func addChildVC() {
+        let menuVC = UIStoryboard(name: StoryboardStrings.mainStoryboardName, bundle: nil).instantiateViewController(identifier: StoryboardStrings.menuStoryboardID) as! MenuViewController
+//        menuVC.delegate = self
+        self.addChild(menuVC)
+        for child in self.children {
+            if let menuVC = child as? MenuViewController {
+                menuVC.delegate = self
+            }
+        }
     }
     
     
-    
-    func changeInStatus() {
-        items[0] = DashboardItem(type: .lte(signalStrength: .noSignal))
-        socketManager.updateInterval = 300
-        dashboardItemsCollectionView.reloadData()
-    }
-    
+    //MARK: Modal View Presentations
     func presentBTUsersVC() {
         let btUsersVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: StoryboardStrings.btUsersVCID) as! BTUsersViewController
-        btUsersVC.modalPresentationStyle = .popover
+        btUsersVC.modalPresentationStyle = .overCurrentContext
         btUsersVC.newBTLEUsers = ["John's iphone", "ABCDE"]
-        present(btUsersVC, animated: true, completion: nil)
+        present(btUsersVC, animated: false, completion: nil)
     }
     
     func presentNFCTransmissionsVC() {
         let nfcTransmissionsVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: StoryboardStrings.nfcTransmissionsVCID) as! NFCTransmissionsViewController
-        nfcTransmissionsVC.modalPresentationStyle = .popover
-        present(nfcTransmissionsVC, animated: true, completion: nil)
+        nfcTransmissionsVC.modalPresentationStyle = .overCurrentContext
+        present(nfcTransmissionsVC, animated: false, completion: nil)
     }
     
     func presentVPNConnectionsVC() {
         let vpnConnectionsVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: StoryboardStrings.vpnConnectionsVCID) as! VPNConnectionsViewController
-        vpnConnectionsVC.modalPresentationStyle = .popover
-        present(vpnConnectionsVC, animated: true, completion: nil)
+        vpnConnectionsVC.modalPresentationStyle = .overCurrentContext
+        present(vpnConnectionsVC, animated: false, completion: nil)
     }
     
     func presentWifiConnectionsVC() {
         let wifiConnectionsVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: StoryboardStrings.wifiConnectionsVCID) as! WiFiConnectionsViewController
-        wifiConnectionsVC.modalPresentationStyle = .popover
-        present(wifiConnectionsVC, animated: true, completion: nil)
+        wifiConnectionsVC.modalPresentationStyle = .overCurrentContext
+        present(wifiConnectionsVC, animated: false, completion: nil)
         
     }
     
@@ -85,9 +113,16 @@ class DashboardViewController: UIViewController {
         return .none
     }
     
-    
-    
-    
+}
+
+extension DashboardViewController: UIGestureRecognizerDelegate {
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        let location = touch.location(in: menuContainerView)
+        let locationIsWithinMenu = location.x >= 0.0 && location.y >= 0.0 && location.x <= menuContainerView.frame.width && location.y <= menuContainerView.frame.height
+        
+        if menuShouldDisplay && !locationIsWithinMenu { return true }
+        else { return false }
+    }
 }
 
 extension DashboardViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
@@ -95,36 +130,55 @@ extension DashboardViewController: UICollectionViewDataSource, UICollectionViewD
         return items.count
     }
     
-    
-    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: StoryboardStrings.dashboardItemRestoreID, for: indexPath) as? DashboardItemCollectionViewCell else { return UICollectionViewCell() }
-        cell.itemName.text = items[indexPath.item].name
-        cell.itemImageView.image = items[indexPath.item].image
+        let item = items[indexPath.item]
+        cell.itemName.text = item.name
+        cell.itemImageView.image = item.image
+        cell.notActiveImageView?.image = item.notActiveImage
         
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        //BTLE
         if indexPath.item == 1 {
-            presentBTUsersVC()
-        } else if indexPath.item == 2 {
-            presentNFCTransmissionsVC()
-        } else if indexPath.item == 4 {
-            presentVPNConnectionsVC()
-        } else if indexPath.item == 5 {
             presentWifiConnectionsVC()
+        } else if indexPath.item == 2 {
+            presentBTUsersVC()
+        } else if indexPath.item == 3 {
+            presentNFCTransmissionsVC()
+        } else if indexPath.item == 5 {
+            presentVPNConnectionsVC()
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionViewWidth/4, height: itemHeight)
+        return CGSize(width: collectionViewWidth/3.2, height: itemHeight)
     }
     
 }
 
 extension DashboardViewController: UIPopoverPresentationControllerDelegate {
-    
 }
+
+extension DashboardViewController: MonitorsSensorStatusChangeDelegate {
+    func changeInStatus() {
+        items[0] = DashboardItem(type: .lte(signalStrength: .noSignal))
+        socketManager.updateInterval = 300
+        overallConnectionStatus.attributedText = overallConnectionStatusText(forSignalStrength: .missingCriticalSignal)
+        
+        dashboardItemsCollectionView.reloadData()
+    }
+}
+
+extension DashboardViewController {
+    func updateConnectionStatus(withPriorityItems priorityItems: [(item: DashboardItem, value: Float)]) {
+        let priorityItems = priorityItems.map({($0.item, convert(prioritySliderValue: $0.value))})
+        let overallSignalStrength = calculateOverallSignalStrength(from: priorityItems)
+        print("overallSignalStrength: \(overallSignalStrength)")
+        overallConnectionStatus.attributedText = overallConnectionStatusText(forSignalStrength: overallSignalStrength)
+    }
+}
+
+
 

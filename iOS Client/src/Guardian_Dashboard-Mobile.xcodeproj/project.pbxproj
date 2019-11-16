@@ -10,6 +10,10 @@
 		721401CD236EF54000DB7A28 /* BTUsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721401CC236EF54000DB7A28 /* BTUsersViewController.swift */; };
 		721401CF236EF89F00DB7A28 /* BTUserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721401CE236EF89F00DB7A28 /* BTUserTableViewCell.swift */; };
 		721A3F50236D1B63002BF83F /* DashboardItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721A3F4F236D1B63002BF83F /* DashboardItemCollectionViewCell.swift */; };
+		72322634237E60EF00318505 /* NFCReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72322633237E60EF00318505 /* NFCReader.swift */; };
+		72322636237E724000318505 /* NetworkMonitoring.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72322635237E724000318505 /* NetworkMonitoring.swift */; };
+		7256CE77237BD39C008219AF /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7256CE76237BD39C008219AF /* MenuViewController.swift */; };
+		7256CE79237BD586008219AF /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7256CE78237BD586008219AF /* MenuTableViewCell.swift */; };
 		7276DFE4236D29B6001C6FBF /* DashboardItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7276DFE3236D29B6001C6FBF /* DashboardItem.swift */; };
 		7276DFE7236E2C33001C6FBF /* SocketIO in Frameworks */ = {isa = PBXBuildFile; productRef = 7276DFE6236E2C33001C6FBF /* SocketIO */; };
 		7276DFE9236E2C52001C6FBF /* SocketIOManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7276DFE8236E2C52001C6FBF /* SocketIOManager.swift */; };
@@ -19,6 +23,8 @@
 		7276DFF6236E75D6001C6FBF /* BluetoothService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7276DFF5236E75D6001C6FBF /* BluetoothService.swift */; };
 		7276DFF9236E7AC2001C6FBF /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7276DFF8236E7AC2001C6FBF /* LocationService.swift */; };
 		72956DA3236E873200D57EA6 /* CellularServiceInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72956DA2236E873200D57EA6 /* CellularServiceInfo.swift */; };
+		729B54E8237B98B800611F02 /* Utils-UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 729B54E7237B98B800611F02 /* Utils-UI.swift */; };
+		729B54EA237B9E8100611F02 /* OverallSignalStrength.swift in Sources */ = {isa = PBXBuildFile; fileRef = 729B54E9237B9E8100611F02 /* OverallSignalStrength.swift */; };
 		72B10B20236F25FF00CF4DBA /* NFCTransmissionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B10B1F236F25FF00CF4DBA /* NFCTransmissionsViewController.swift */; };
 		72B10B22236F262B00CF4DBA /* VPNConnectionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B10B21236F262B00CF4DBA /* VPNConnectionsViewController.swift */; };
 		72B10B24236F264F00CF4DBA /* WiFiConnectionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B10B23236F264F00CF4DBA /* WiFiConnectionsViewController.swift */; };
@@ -40,6 +46,10 @@
 		721401CC236EF54000DB7A28 /* BTUsersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTUsersViewController.swift; sourceTree = "<group>"; };
 		721401CE236EF89F00DB7A28 /* BTUserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTUserTableViewCell.swift; sourceTree = "<group>"; };
 		721A3F4F236D1B63002BF83F /* DashboardItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardItemCollectionViewCell.swift; sourceTree = "<group>"; };
+		72322633237E60EF00318505 /* NFCReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFCReader.swift; sourceTree = "<group>"; };
+		72322635237E724000318505 /* NetworkMonitoring.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitoring.swift; sourceTree = "<group>"; };
+		7256CE76237BD39C008219AF /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		7256CE78237BD586008219AF /* MenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
 		7276DFE3236D29B6001C6FBF /* DashboardItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardItem.swift; sourceTree = "<group>"; };
 		7276DFE8236E2C52001C6FBF /* SocketIOManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketIOManager.swift; sourceTree = "<group>"; };
 		7276DFEE236E351E001C6FBF /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
@@ -48,11 +58,13 @@
 		7276DFF5236E75D6001C6FBF /* BluetoothService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothService.swift; sourceTree = "<group>"; };
 		7276DFF8236E7AC2001C6FBF /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		72956DA2236E873200D57EA6 /* CellularServiceInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellularServiceInfo.swift; sourceTree = "<group>"; };
+		729B54E7237B98B800611F02 /* Utils-UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Utils-UI.swift"; sourceTree = "<group>"; };
+		729B54E9237B9E8100611F02 /* OverallSignalStrength.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverallSignalStrength.swift; sourceTree = "<group>"; };
 		72B10B1F236F25FF00CF4DBA /* NFCTransmissionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFCTransmissionsViewController.swift; sourceTree = "<group>"; };
 		72B10B21236F262B00CF4DBA /* VPNConnectionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPNConnectionsViewController.swift; sourceTree = "<group>"; };
 		72B10B23236F264F00CF4DBA /* WiFiConnectionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiFiConnectionsViewController.swift; sourceTree = "<group>"; };
 		72B10B27236F2CCD00CF4DBA /* NFCTransmissionsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFCTransmissionsTableViewCell.swift; sourceTree = "<group>"; };
-		72B10B29236F2D0A00CF4DBA /* VPNConnectionsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VPNConnectionsTableViewCell.swift; path = "Guardian_Dashboard-Mobile/VPNConnectionsTableViewCell.swift"; sourceTree = SOURCE_ROOT; };
+		72B10B29236F2D0A00CF4DBA /* VPNConnectionsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VPNConnectionsTableViewCell.swift; path = "Guardian_Dashboard-Mobile/View & Controllers/Cells/VPNConnectionsTableViewCell.swift"; sourceTree = SOURCE_ROOT; };
 		72B10B2B236F2D2A00CF4DBA /* WifiConnectionsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WifiConnectionsTableViewCell.swift; sourceTree = "<group>"; };
 		72BFD0C8236F33DB0099F58B /* VPNRecentConnectionsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPNRecentConnectionsTableViewCell.swift; sourceTree = "<group>"; };
 		72BFD0CA236F37E60099F58B /* WiFiRecentConnectionsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiFiRecentConnectionsTableViewCell.swift; sourceTree = "<group>"; };
@@ -91,19 +103,14 @@
 		7276DFEB236E34C5001C6FBF /* View & Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				72BFD0CA236F37E60099F58B /* WiFiRecentConnectionsTableViewCell.swift */,
-				72B10B29236F2D0A00CF4DBA /* VPNConnectionsTableViewCell.swift */,
-				72B10B2B236F2D2A00CF4DBA /* WifiConnectionsTableViewCell.swift */,
+				72DED3E4236FB99F00297E7A /* Cells */,
 				72F1F6CF236CEF45005AD7FB /* DashboardViewController.swift */,
+				7256CE76237BD39C008219AF /* MenuViewController.swift */,
 				721401CC236EF54000DB7A28 /* BTUsersViewController.swift */,
 				72B10B21236F262B00CF4DBA /* VPNConnectionsViewController.swift */,
 				72B10B23236F264F00CF4DBA /* WiFiConnectionsViewController.swift */,
 				72B10B1F236F25FF00CF4DBA /* NFCTransmissionsViewController.swift */,
-				72B10B27236F2CCD00CF4DBA /* NFCTransmissionsTableViewCell.swift */,
-				72BFD0C8236F33DB0099F58B /* VPNRecentConnectionsTableViewCell.swift */,
-				721401CE236EF89F00DB7A28 /* BTUserTableViewCell.swift */,
 				72F1F6D1236CEF45005AD7FB /* Main.storyboard */,
-				721A3F4F236D1B63002BF83F /* DashboardItemCollectionViewCell.swift */,
 			);
 			path = "View & Controllers";
 			sourceTree = "<group>";
@@ -111,6 +118,7 @@
 		7276DFEC236E34DF001C6FBF /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
+				729B54E7237B98B800611F02 /* Utils-UI.swift */,
 				72F1F6D4236CEF46005AD7FB /* Assets.xcassets */,
 				72F1F6D6236CEF46005AD7FB /* LaunchScreen.storyboard */,
 			);
@@ -121,6 +129,7 @@
 			isa = PBXGroup;
 			children = (
 				7276DFE3236D29B6001C6FBF /* DashboardItem.swift */,
+				729B54E9237B9E8100611F02 /* OverallSignalStrength.swift */,
 				72E9F163236D0BE00035D11F /* Constants.swift */,
 			);
 			path = "Model & Constants";
@@ -138,12 +147,29 @@
 		7276DFF7236E7A19001C6FBF /* Sensor Data */ = {
 			isa = PBXGroup;
 			children = (
+				72322633237E60EF00318505 /* NFCReader.swift */,
 				7276DFF3236E64F9001C6FBF /* SensorAggregator.swift */,
 				7276DFF5236E75D6001C6FBF /* BluetoothService.swift */,
 				7276DFF8236E7AC2001C6FBF /* LocationService.swift */,
 				72956DA2236E873200D57EA6 /* CellularServiceInfo.swift */,
+				72322635237E724000318505 /* NetworkMonitoring.swift */,
 			);
 			path = "Sensor Data";
+			sourceTree = "<group>";
+		};
+		72DED3E4236FB99F00297E7A /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				7256CE78237BD586008219AF /* MenuTableViewCell.swift */,
+				72BFD0CA236F37E60099F58B /* WiFiRecentConnectionsTableViewCell.swift */,
+				72B10B29236F2D0A00CF4DBA /* VPNConnectionsTableViewCell.swift */,
+				72B10B2B236F2D2A00CF4DBA /* WifiConnectionsTableViewCell.swift */,
+				72B10B27236F2CCD00CF4DBA /* NFCTransmissionsTableViewCell.swift */,
+				72BFD0C8236F33DB0099F58B /* VPNRecentConnectionsTableViewCell.swift */,
+				721401CE236EF89F00DB7A28 /* BTUserTableViewCell.swift */,
+				721A3F4F236D1B63002BF83F /* DashboardItemCollectionViewCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		72F1F6BF236CEF45005AD7FB = {
@@ -261,19 +287,25 @@
 				72BFD0CB236F37E60099F58B /* WiFiRecentConnectionsTableViewCell.swift in Sources */,
 				72B10B2C236F2D2A00CF4DBA /* WifiConnectionsTableViewCell.swift in Sources */,
 				72B10B20236F25FF00CF4DBA /* NFCTransmissionsViewController.swift in Sources */,
+				729B54E8237B98B800611F02 /* Utils-UI.swift in Sources */,
 				72F1F6D0236CEF45005AD7FB /* DashboardViewController.swift in Sources */,
+				729B54EA237B9E8100611F02 /* OverallSignalStrength.swift in Sources */,
 				7276DFF1236E4E5C001C6FBF /* JSONEmit.swift in Sources */,
 				7276DFE4236D29B6001C6FBF /* DashboardItem.swift in Sources */,
 				72F1F6CC236CEF45005AD7FB /* AppDelegate.swift in Sources */,
 				72956DA3236E873200D57EA6 /* CellularServiceInfo.swift in Sources */,
 				72F1F6CE236CEF45005AD7FB /* SceneDelegate.swift in Sources */,
+				72322636237E724000318505 /* NetworkMonitoring.swift in Sources */,
 				721401CD236EF54000DB7A28 /* BTUsersViewController.swift in Sources */,
 				7276DFF9236E7AC2001C6FBF /* LocationService.swift in Sources */,
+				7256CE77237BD39C008219AF /* MenuViewController.swift in Sources */,
 				72E9F164236D0BE00035D11F /* Constants.swift in Sources */,
 				72B10B28236F2CCD00CF4DBA /* NFCTransmissionsTableViewCell.swift in Sources */,
 				7276DFF4236E64F9001C6FBF /* SensorAggregator.swift in Sources */,
 				72B10B24236F264F00CF4DBA /* WiFiConnectionsViewController.swift in Sources */,
 				7276DFF6236E75D6001C6FBF /* BluetoothService.swift in Sources */,
+				7256CE79237BD586008219AF /* MenuTableViewCell.swift in Sources */,
+				72322634237E60EF00318505 /* NFCReader.swift in Sources */,
 				721401CF236EF89F00DB7A28 /* BTUserTableViewCell.swift in Sources */,
 				7276DFE9236E2C52001C6FBF /* SocketIOManager.swift in Sources */,
 				72B10B22236F262B00CF4DBA /* VPNConnectionsViewController.swift in Sources */,

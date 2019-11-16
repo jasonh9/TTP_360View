@@ -16,14 +16,30 @@ class NFCTransmissionsViewController: UIViewController {
     let currentTransmissions: [String] = ["mifare"]
     let recentTransmissions: [String] = ["ndef"]
     
+    
+    @IBAction func viewTapped(_ sender: UITapGestureRecognizer) {
+        dismiss(animated: false, completion: nil)
+    }
+    
+    
+    @IBAction func viewSwiped(_ sender: UISwipeGestureRecognizer) {
+        dismiss(animated: false, completion: nil)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         nfcTableView.tableFooterView = UIView()
     }
     
-    
-    
+}
+
+extension NFCTransmissionsViewController: UIGestureRecognizerDelegate {
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        let location = touch.location(in: nfcTableView)
+        let touchIsInTableView = location.x >= 0.0 && location.y >= 0.0 && location.x <= nfcTableView.frame.width && location.y <= nfcTableView.frame.height
+        return !touchIsInTableView
+    }
 }
 
 extension NFCTransmissionsViewController: UITableViewDataSource, UITableViewDelegate {
