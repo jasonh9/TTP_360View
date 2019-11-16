@@ -1,0 +1,102 @@
+{
+    "UUID": "297b42a9-9e31-43db-b436-f7b61a55688a",
+    "LTE": {
+      "provider": "first net",
+      "connectionStatus": "disconnected"
+    },
+    "BLE": {
+      "currentConnection": [
+        {
+          "deviceName": "Headphonexyz",
+          "sigStrength": "20",
+          "protocol": "BLE"
+        },
+        {
+          "deviceName": "smart ring",
+          "sigStrength": "10",
+          "protocol": "Classic"
+        }
+      ],
+      "recentConnection": [
+        {
+          "deviceName": "earbuds",
+          "sigStrength": "30",
+          "protocol": "BLE"
+        },
+        {
+          "deviceName": "smart hose",
+          "sigStrength": "60",
+          "protocol": "Classic"
+        }
+      ]
+    },
+    "NFC": {
+      "status": "on",
+      "scans": [
+        {
+          "tagType": "mifare",
+          "timestamp": "1572749269"
+        },
+        {
+          "tagType": "ndef",
+          "timestamp": "1572749266"
+        }
+      ]
+    },
+    "HRD_ENC": {
+      "encryptionStatus": "on"
+    },
+    "VPN": {
+      "currentConnection": {
+        "connectionName": "firstNetVPN111",
+        "timestamp": "1572749266"
+      },
+      "recentConnection": [
+        {
+          "connectionName": "firstNetVPN123",
+          "timestamp": "1572759266"
+        },
+        {
+          "connectionName": "firstNetVPN161",
+          "timestamp": "1572142666"
+        }
+      ]
+    },
+    "WIFI": {
+      "currentConnection": {
+        "connectionName": "starbucks",
+        "timestamp": "1572759266",
+        "connectionStrength": "23",
+        "security": "wp2_psk",
+        "protocol": "2ghz"
+      },
+      "recentConnection": [
+        {
+          "connectionName": "google",
+          "timestamp": "157275466",
+          "security": "wp2_psk",
+          "protocol": "2ghz"
+        },
+        {
+          "connectionName": "topgear",
+          "timestamp": "152275466",
+          "security": "wp2_psk",
+          "protocol": "5ghz"
+        }
+      ]
+    },
+    "GPS": {
+      "gpsStatus": "on",
+      "currentPosition": {
+        "long": "12",
+        "lat": "23"
+      }
+    },
+    "AV": {
+      "status": "on"
+    },
+    "MDM": {
+      "status": "on",
+      "profile": "first responder mdm 111"
+    }
+  }
