@@ -22,18 +22,21 @@
     height: calc(100% - 61px);
 }
 
-.interfaces ul {
+.interface-selection {
+    width: 40%;
+}
+
+.interfaces .interface-selection ul {
     position: relative;
     margin: 0;
     list-style: none;
     background-color: #f7f7f7;
-    width: 40%;
     height: 100%;
     padding: 0;
     border-right: 1px solid #e8e8e8;
 }
 
-.interfaces ul li {
+.interfaces .interface-selection ul li {
     font-weight: bold;
     font-size: 1.2em;
     line-height: 70px;
@@ -42,11 +45,11 @@
     border-bottom: 1px solid #e8e8e8;
 }
 
-.interfaces ul .active {
+.interfaces .interface-selection ul .active {
     background-color: #8c8c8c;
     color: white !important;
 }
-.arrow-right {
+.interface-selection .arrow-right {
     position: absolute;
     margin-top:15px;
     left: 0;
@@ -55,4 +58,23 @@
     border-top: 20px solid transparent;
     border-bottom: 20px solid transparent;
     border-left: 20px solid white;
+}
+
+.interface-selection .check {
+    width: 20px;
+    padding-left: 10px;
+}
+
+.interface-selection .times {
+    width: 15px;
+    padding-left: 10px;
+}
+
+.interface-details {
+    width: 60%;
+    background-color: #ededed;
+}
+
+.interface-details h3{
+    text-decoration: underline;
 }

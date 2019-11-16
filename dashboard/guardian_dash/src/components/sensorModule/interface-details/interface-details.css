@@ -1,0 +1,44 @@
+.interface-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 30px 0 30px;
+  overflow:scroll !important;
+  padding-right: 17px; /* Increase/decrease this value for cross-browser compatibility */
+  box-sizing: content-box; /* So the width will be 100% + 17px */
+}
+
+.interface-details p {
+  margin: 0 0 20px 0;
+}
+
+.interface-details-header {
+  height: 50px;
+  width: 80%;
+  background: #8c8c8c;
+  color: white;
+  padding: 0 0 15px 0;
+}
+
+.interface-details-data {
+  width: 70%;
+  background: white;
+}
+
+.interface-details-data h3 {
+  text-decoration: underline;
+}
+
+.interface-details-data ul {
+  list-style: none;
+  padding: 0;
+
+}
+
+.interface-details-data ul li {
+  padding: 10px 0 10px 0;
+  font-size: 1em;
+  font-weight: normal;
+  background: #e8e8e8;
+  border-bottom: 1px solid #8c8c8c;
+}
