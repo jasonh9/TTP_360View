@@ -49,6 +49,6 @@ class MenuTableViewCell: UITableViewCell {
         checkbox.layer.borderColor = UIColor.lightGray.cgColor
         prioritySlider.isContinuous = false
         
-        delegate?.updatePriorityStatus(atSensorIndex: self.tag, withNewValue: checkboxShouldBeChecked ?  prioritySlider.value : 0.0)
+        delegate?.updatePriorityStatus(atSensorIndex: self.tag, withNewValue: checkboxShouldBeChecked ?  prioritySlider.value : 0.5)
     }
 }

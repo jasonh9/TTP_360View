@@ -19,6 +19,8 @@ class MenuViewController: UIViewController {
     var items: [DashboardItem] = DashboardItem.defaultItems
     var itemPriorityStatuses: [(item: DashboardItem, value: Float)] = [] {
          willSet {
+            print("itemPriorityStatuses is being set, is now: \(newValue.map({$0.value}))")
+            print("delegate is nil: \(delegate == nil)")
             delegate?.updateConnectionStatus(withPriorityItems: newValue)
         }
     }
@@ -26,13 +28,24 @@ class MenuViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        itemPriorityStatuses = items.map { ($0, 0.0) }
+        populateItemPriorityStatuses(withValues: Array(repeating: Float(0.5), count: DashboardItem.defaultItems.count))
+        if let parent = self.parent as? AggregateConnectionPriorityDelegate {
+            delegate = parent
+        }
         
         menuTableView.tableFooterView = UIView()
+        print("self is: \(self)")
     }
     
-
-
+    //If slider values get saved in defaults, or are set by command center, can add the value here
+    func populateItemPriorityStatuses(withValues values: [Float]) {
+        //After iterating through values, set itemPriorityStatuses in one go
+        var _itemPriorityStatuses: [(DashboardItem, Float)] = []
+        for (index, item) in DashboardItem.defaultItems.enumerated() {
+            _itemPriorityStatuses.append((item, values[index]))
+        }
+        itemPriorityStatuses = _itemPriorityStatuses
+    }
 }
 
 extension MenuViewController: UITableViewDataSource, UITableViewDelegate {
@@ -67,6 +80,5 @@ extension MenuViewController: UITableViewDataSource, UITableViewDelegate {
 extension MenuViewController: ConnectionPriorityDelegate {
     func updatePriorityStatus(atSensorIndex index: Int, withNewValue updatedValue: Float) {
         itemPriorityStatuses[index].value = updatedValue
-        print(itemPriorityStatuses)
     }
 }

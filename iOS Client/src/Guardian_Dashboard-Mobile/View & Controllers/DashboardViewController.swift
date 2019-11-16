@@ -9,7 +9,7 @@
 import UIKit
 
 
-class DashboardViewController: UIViewController {
+class DashboardViewController: UIViewController, AggregateConnectionPriorityDelegate {
     @IBOutlet weak var dashboardItemsCollectionView: UICollectionView!
     @IBOutlet weak var overallConnectionStatus: UILabel!
     @IBOutlet weak var connectionStatusContainingView: UIView!
@@ -55,14 +55,18 @@ class DashboardViewController: UIViewController {
         overallConnectionStatus.attributedText = overallConnectionStatusText(forSignalStrength: .medium)
         connectionStatusContainingView.layer.cornerRadius = 10
         view.bringSubviewToFront(menuContainerView)
-        
+        addChildVC()
     }
     
     func addChildVC() {
         let menuVC = UIStoryboard(name: StoryboardStrings.mainStoryboardName, bundle: nil).instantiateViewController(identifier: StoryboardStrings.menuStoryboardID) as! MenuViewController
-        menuVC.delegate = self
+//        menuVC.delegate = self
         self.addChild(menuVC)
-        //Set delegate, as well as instantiate
+        for child in self.children {
+            if let menuVC = child as? MenuViewController {
+                menuVC.delegate = self
+            }
+        }
     }
     
     
@@ -155,7 +159,6 @@ extension DashboardViewController: UICollectionViewDataSource, UICollectionViewD
 }
 
 extension DashboardViewController: UIPopoverPresentationControllerDelegate {
-    
 }
 
 extension DashboardViewController: MonitorsSensorStatusChangeDelegate {
@@ -168,11 +171,12 @@ extension DashboardViewController: MonitorsSensorStatusChangeDelegate {
     }
 }
 
-extension DashboardViewController: AggregateConnectionPriorityDelegate {
+extension DashboardViewController {
     func updateConnectionStatus(withPriorityItems priorityItems: [(item: DashboardItem, value: Float)]) {
-            let priorityItems = priorityItems.map({($0.item, convert(prioritySliderValue: $0.value))})
-            let overallSignalStrength = calculateOverallSignalStrength(from: priorityItems)
-            overallConnectionStatus.attributedText = overallConnectionStatusText(forSignalStrength: overallSignalStrength)
+        let priorityItems = priorityItems.map({($0.item, convert(prioritySliderValue: $0.value))})
+        let overallSignalStrength = calculateOverallSignalStrength(from: priorityItems)
+        print("overallSignalStrength: \(overallSignalStrength)")
+        overallConnectionStatus.attributedText = overallConnectionStatusText(forSignalStrength: overallSignalStrength)
     }
 }
 

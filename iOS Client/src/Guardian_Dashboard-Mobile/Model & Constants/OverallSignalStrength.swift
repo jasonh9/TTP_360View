@@ -37,7 +37,7 @@ func calculateOverallSignalStrength(from priorityItems: [(item: DashboardItem, p
         rawSignalStrengthScore += Float(pItem.item.type.strength) * Float(pItem.priority.rawValue)
     }
     
-    let score: Float = Float(numSensorsConsidered) / rawSignalStrengthScore
+    let score: Float = rawSignalStrengthScore / Float(numSensorsConsidered)
     switch score {
     case let s where s > 4.0: return .strong
     case let s where s > 1.0 && s < 4.0: return .medium
@@ -48,8 +48,8 @@ func calculateOverallSignalStrength(from priorityItems: [(item: DashboardItem, p
 
 func convert(prioritySliderValue value: Float) -> SensorPriority {
     switch value {
-    case let v where v > 0.8: return .essential
-    case let v where v < 0.8 && v > 0.5: return .important
+    case let v where v > 0.85: return .essential
+    case let v where v < 0.85 && v > 0.5: return .important
     case let v where v < 0.5 && v > 0.0: return .lessImportant
     case let v where v == 0.0: return .notRelevant
     default: return .lessImportant

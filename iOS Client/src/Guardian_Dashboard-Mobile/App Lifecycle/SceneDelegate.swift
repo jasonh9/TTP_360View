@@ -14,6 +14,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     let socketManager = SocketIOManager.shared
     let btManager = BTService.btManager
     let locationService = LocationService.sharedInstance
+    let networkMonitor = NetworkMonitoring.shared
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let _ = (scene as? UIWindowScene) else { return }
@@ -33,6 +34,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         btManager.setup()
         locationService.manager.startUpdatingLocation()
+        networkMonitor.setup()
     }
 
     func sceneWillResignActive(_ scene: UIScene) {

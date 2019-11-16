@@ -11,7 +11,7 @@
 		721401CF236EF89F00DB7A28 /* BTUserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721401CE236EF89F00DB7A28 /* BTUserTableViewCell.swift */; };
 		721A3F50236D1B63002BF83F /* DashboardItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721A3F4F236D1B63002BF83F /* DashboardItemCollectionViewCell.swift */; };
 		72322634237E60EF00318505 /* NFCReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72322633237E60EF00318505 /* NFCReader.swift */; };
-		72322636237E724000318505 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72322635237E724000318505 /* Reachability.swift */; };
+		72322636237E724000318505 /* NetworkMonitoring.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72322635237E724000318505 /* NetworkMonitoring.swift */; };
 		7256CE77237BD39C008219AF /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7256CE76237BD39C008219AF /* MenuViewController.swift */; };
 		7256CE79237BD586008219AF /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7256CE78237BD586008219AF /* MenuTableViewCell.swift */; };
 		7276DFE4236D29B6001C6FBF /* DashboardItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7276DFE3236D29B6001C6FBF /* DashboardItem.swift */; };
@@ -47,7 +47,7 @@
 		721401CE236EF89F00DB7A28 /* BTUserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTUserTableViewCell.swift; sourceTree = "<group>"; };
 		721A3F4F236D1B63002BF83F /* DashboardItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardItemCollectionViewCell.swift; sourceTree = "<group>"; };
 		72322633237E60EF00318505 /* NFCReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFCReader.swift; sourceTree = "<group>"; };
-		72322635237E724000318505 /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
+		72322635237E724000318505 /* NetworkMonitoring.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitoring.swift; sourceTree = "<group>"; };
 		7256CE76237BD39C008219AF /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		7256CE78237BD586008219AF /* MenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
 		7276DFE3236D29B6001C6FBF /* DashboardItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardItem.swift; sourceTree = "<group>"; };
@@ -152,7 +152,7 @@
 				7276DFF5236E75D6001C6FBF /* BluetoothService.swift */,
 				7276DFF8236E7AC2001C6FBF /* LocationService.swift */,
 				72956DA2236E873200D57EA6 /* CellularServiceInfo.swift */,
-				72322635237E724000318505 /* Reachability.swift */,
+				72322635237E724000318505 /* NetworkMonitoring.swift */,
 			);
 			path = "Sensor Data";
 			sourceTree = "<group>";
@@ -295,7 +295,7 @@
 				72F1F6CC236CEF45005AD7FB /* AppDelegate.swift in Sources */,
 				72956DA3236E873200D57EA6 /* CellularServiceInfo.swift in Sources */,
 				72F1F6CE236CEF45005AD7FB /* SceneDelegate.swift in Sources */,
-				72322636237E724000318505 /* Reachability.swift in Sources */,
+				72322636237E724000318505 /* NetworkMonitoring.swift in Sources */,
 				721401CD236EF54000DB7A28 /* BTUsersViewController.swift in Sources */,
 				7276DFF9236E7AC2001C6FBF /* LocationService.swift in Sources */,
 				7256CE77237BD39C008219AF /* MenuViewController.swift in Sources */,
