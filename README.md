@@ -10,8 +10,10 @@ Every time a payload is received, the server will respond with a status and an i
 
 ## Screenshots
 ### Mobile Client Dashboard
+<div style="display: flex; flex-direction: row">
 <img src="https://github.com/jasonh9/TTP_360View/blob/master/screenshots/Simulator%20Screen%20Shot%20-%20iPhone%2011%20Pro%20Max%20-%202019-11-15%20at%2020.54.48.png?raw=true" width="256" title="mobile dash">
 <img src="https://github.com/jasonh9/TTP_360View/blob/master/screenshots/Simulator%20Screen%20Shot%20-%20iPhone%2011%20Pro%20Max%20-%202019-11-15%20at%2020.56.42.png?raw=true" width="256" title="mobile dash">
+</div>
 
 
 ### Command Center Dashboard
