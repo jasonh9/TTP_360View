@@ -4,16 +4,20 @@ const io = require('socket.io')(server)
 // const util = require('util')
 // const lodash = require('lodash')
 
-const registerDevice = require('./controllers/register-device')
+const createIndexes = require('./db/createIndexes')
 
-io.on('connection', (socket) => {
-  // register user
-  socket.on('register', (UUID) => {
-    console.log('User is requesting to register : ', UUID)
-    registerDevice(socket, UUID)
-  })
+// const Db = require('mongodb').Db,
+//   Server = require('mongodb').Server,
+//   MongoClient = require('mongodb').MongoClient
 
-  // process data
-})
+async function init () {
+  try {
+    // await createIndexes()
+  } catch (err) {
+    console.warn('error creating the indexes on the database collection:')
+    console.warn(err.message)
+  }
+  require('./routes').connectWSS(io, server)
+}
 
-server.listen(3001)
+init()
