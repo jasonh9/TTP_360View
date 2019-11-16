@@ -10,8 +10,7 @@ class SideNav extends React.Component {
     render(){
         return (
             <div className="sideNav">
-                {/* <DispatchLogo /> */}
-                <h1>Users</h1>
+                <DispatchLogo />
                 <ActiveUsers />
             </div>
         )

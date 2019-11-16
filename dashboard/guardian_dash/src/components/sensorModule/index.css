@@ -1,35 +1,80 @@
 .moduleContainer {
-    width : calc(100vw - 25vw);
+    width: 100%;
 }
 
-.moduleContainer ul{
-    list-style: none;
+.module-header {
+    background-color: #0086c4;
+    width: 100%;
+    height: 60px;
+    border-bottom: 1px solid #005982;
+}
+
+.module-header h1{
+    margin: 0;
+    font-size: 1.5em;
+    padding-top: 14px;
+    color: white;
+}
+
+.interfaces {
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    height: calc(100% - 61px);
 }
 
-.moduleContainer ul li {
-    width: 10%;
-    padding: 25px 50px 25px 50px;
-    border: 1px solid black;
-    margin: 10px;
-    border-radius: 30px;
-}
-.moduleContainer ul li h2{
-    font-size: 15px;
-    padding: 4px;
-    width: 100%;
-    background-color: aliceblue;
+.interface-selection {
+    width: 40%;
 }
 
-h3 {
-    font-size: 14px;
-    text-align: left;
-    padding: 20px;
-    background-color: #ccc;
-    width: 15%;
-    border-top-right-radius: 20px;
-    border-bottom: 1px solid rgb(92, 92, 92);
+.interfaces .interface-selection ul {
+    position: relative;
+    margin: 0;
+    list-style: none;
+    background-color: #f7f7f7;
+    height: 100%;
+    padding: 0;
+    border-right: 1px solid #e8e8e8;
+}
+
+.interfaces .interface-selection ul li {
+    font-weight: bold;
+    font-size: 1.2em;
+    line-height: 70px;
+    white-space: nowrap;
+    height: 70px;
+    border-bottom: 1px solid #e8e8e8;
+}
+
+.interfaces .interface-selection ul .active {
+    background-color: #8c8c8c;
+    color: white !important;
+}
+.interface-selection .arrow-right {
+    position: absolute;
+    margin-top:15px;
+    left: 0;
+    width: 0; 
+    height: 0; 
+    border-top: 20px solid transparent;
+    border-bottom: 20px solid transparent;
+    border-left: 20px solid white;
+}
+
+.interface-selection .check {
+    width: 20px;
+    padding-left: 10px;
+}
+
+.interface-selection .times {
+    width: 15px;
+    padding-left: 10px;
+}
+
+.interface-details {
+    width: 60%;
+    background-color: #ededed;
+}
+
+.interface-details h3{
+    text-decoration: underline;
 }

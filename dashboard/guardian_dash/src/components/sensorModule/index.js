@@ -1,15 +1,8 @@
 import React from 'react';
 import './index.css';
-import store from '../../redux/store/index';
-import wifi from '../../assets/wifi-solid.svg';
-import ble from '../../assets/bluetooth-brands.svg';
-import nfc from '../../assets/nfc.svg';
-import hdd from '../../assets/shield-alt-solid.svg';
-import vpn from '../../assets/vpn.svg';
-import cell from '../../assets/cell.svg';
-import gps from '../../assets/gps.svg';
-import antiVirus from '../../assets/antivirus.svg';
-import mdm from '../../assets/mdm.svg';
+import check from '../../assets/images/icons/check-solid.svg'
+import times from '../../assets/images/icons/times-solid.svg'
+import InterfaceDetails from './interface-details'
 
 class SensorModule extends React.Component {
     constructor() {
@@ -58,55 +51,37 @@ class SensorModule extends React.Component {
             }
         }
         return(
-            <div className="moduleContainer">
-                <h3>{nameDecide()}</h3>
-                <ul>
-                    <li>
-                        <img src={cell} width="40px"/><br/>
-                        <h2>LTE</h2>
-                        {this.state.LTE_connectionStatus}<br/>
-                        {this.state.LTE_provider}
-                    </li>
-                    <li>
-                        <img src={ble} width="40px" /><br/>
-                        <h2>BLE:</h2> OFF
-                    </li>
-                    <li>
-                        <img src={nfc} width="40px"/><br/>
-                        <h2>NFC</h2>
-                        {this.state.NFC_status}
-                    </li>
-                    <li>
-                        <img src={hdd} width="40px"/><br/>
-                        <h2>HDD ENC</h2>
-                        {this.state.HRD_ENC_encryptionStatus}
-                    </li>
-                    <li>
-                        <img src={vpn} width="40px"/><br/>
-                        <h2>VPN</h2>
-                        connected
-                    </li>
-                    <li>
-                        <img src={wifi} width="40px"/><br/>
-                        <h2>WIFI</h2>
-                        connected
-                    </li>
-                    <li>
-                        <img src={gps} width="40px"/><br/>
-                        <h2>GPS</h2>
-                        {this.state.GPS_gpsStatus}
-                    </li>
-                    <li>
-                        <img src={antiVirus} width="40px"/><br/>
-                        <h2>AV</h2>
-                        {this.state.AV_status}
-                    </li>
-                    <li>
-                        <img src={mdm} width="40px"/><br/>
-                        <h2>MDM</h2>
-                        {this.state.MDM_profile}
-                    </li>
-                </ul>
+            <div className='moduleContainer'>
+                <div className='module-header'>
+                    <h1>John Smith's Dashboard Details</h1>
+                </div>
+                <div className='interfaces' >
+                    <div className='interface-selection'>
+                        <ul>
+                            <li>LTE<img className='check' src={check} /></li>
+                            <li>BLE<img className='check' src={check} /></li>
+                            <li>NFC<img className='check' src={check} /></li>
+                            <li>HDD ENC<img className='check' src={check} /></li>
+                            <li>VPN<img className='check' src={check} /></li>
+                            <li className='active'><span className='arrow-right'/>WIFI<img className='times' src={times} /></li>
+                            <li>GPS<img className='check' src={check} /></li>
+                            <li>AV<img className='check' src={check} /></li>
+                            <li>MDM<img className='check' src={check} /></li>
+                        </ul>
+                    </div>
+                    <InterfaceDetails />
+                </div>
+                {/* <ul>
+                    <li>LTE</li>
+                    <li>BLE</li>
+                    <li>NFC</li>
+                    <li>HDD ENC</li>
+                    <li>VPN</li>
+                    <li>WIFI</li>
+                    <li>GPS</li>
+                    <li>AV</li>
+                    <li>MDM</li>
+                </ul> */ }
             </div>
         )
     }
