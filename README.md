@@ -11,9 +11,9 @@ Every time a payload is received, the server will respond with a status and an i
 ## Screenshots
 ### Mobile Client Dashboard
 ![mobile client dash](https://github.com/jasonh9/TTP_360View/blob/master/screenshots/Simulator%20Screen%20Shot%20-%20iPhone%2011%20Pro%20Max%20-%202019-11-15%20at%2020.54.48.png?raw=true)
-s
+
 ### Command Center Dashboard
-![command center dash](https://github.com/jasonh9/TTP_360View/blob/master/screenshots/Screen%20Shot%202019-11-15%20at%208.47.14%20PM.png?raw=true)
+![command center dash](https://github.com/jasonh9/TTP_360View/blob/master/screenshots/Screen%20Shot%202019-11-15%20at%209.45.19%20PM.png?raw=true)
 
 
 # Usage
