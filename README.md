@@ -42,7 +42,7 @@ make sure you use the integrity hash to check your payload! this will let the ap
 
 # Pre-req
 #### Installing the iOS Client: 
-Please contact devs to get a Testflight code
+Please contact developers for a Testflight code
 
 Mongodb
 #### installing mongodb on mac
