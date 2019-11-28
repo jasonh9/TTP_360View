@@ -41,6 +41,9 @@ make sure you use the integrity hash to check your payload! this will let the ap
 * Web Dashboard
 
 # Pre-req
+#### Installing the iOS Client: 
+Please contact devs to get a Testflight code
+
 Mongodb
 #### installing mongodb on mac
 Visit https://docs.mongodb.com/manual/tutorial/install-mongodb-on-os-x/
