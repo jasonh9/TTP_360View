@@ -38,7 +38,7 @@
     "express": "^4.17.1",
     "ip-regex": "^4.0.0",
     "is-valid-email": "0.0.4",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.19",
     "mongodb": "^3.3.4",
     "p-reduce": "^2.0.0",
     "redis": "^2.8.0",
