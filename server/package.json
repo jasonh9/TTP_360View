@@ -41,7 +41,7 @@
     "lodash": "^4.17.15",
     "mongodb": "^3.3.4",
     "p-reduce": "^2.0.0",
-    "redis": "^2.8.0",
+    "redis": "^3.1.1",
     "redis-server": "^1.2.2",
     "sanitize-html": "^1.20.0",
     "socket.io": "^2.3.0"
