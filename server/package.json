@@ -29,7 +29,7 @@
   },
   "homepage": "https://github.com/jasonh9/TTP_360View#readme",
   "dependencies": {
-    "ajv": "^6.10.2",
+    "ajv": "^6.12.3",
     "babel-cli": "^6.26.0",
     "babel-plugin-inline-dotenv": "^1.2.2",
     "body-parser": "^1.18.3",
